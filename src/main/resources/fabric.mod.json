@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "lychee",
+  "version": "${version}",
+
+  "name": "Jade Addons",
+  "description": "Jade's additional mod supports for Fabric.",
+  "authors": ["Snownee"],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/jade-addons-fabric",
+    "sources": "https://github.com/Snownee/JadeAddonsFabric",
+    "issues": "https://github.com/Snownee/JadeAddonsFabric/issues"
+  },
+
+  "license": "ARR",
+  "icon": "icon.png",
+
+  "entrypoints": {
+    "jade": [
+      "snownee.jade.addon.create.CreatePlugin",
+      "snownee.jade.addon.lootr.LootrPlugin",
+      "snownee.jade.addon.secret_rooms.SecretRoomsPlugin"
+    ]
+  },
+  "mixins": [ "jadeaddons.mixins.json" ],
+
+  "depends": {
+    "jade": ">=5.99.8",
+    "fabric": "*",
+    "minecraft": ">=1.18.2",
+    "java": ">=17"
+  },
+
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/KzGQW7a"
+      }
+    }
+  }
+}
