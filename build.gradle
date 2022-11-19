@@ -22,7 +22,7 @@ repositories {
     maven { url = "https://api.modrinth.com/maven" } // LazyDFU, Suggestion Tweaker
     maven { url = "https://mvn.devos.one/snapshots/" } // Create, Porting Lib, Forge Tags, Milk Lib
     maven { url = "https://maven.tterrag.com/" } // Registrate and Flywheel
-    maven { url = "https://maven.cafeteria.dev" } // Fake Player API
+    maven { url = "https://maven.cafeteria.dev/releases/" } // Fake Player API
     maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
     maven { url = "https://jitpack.io/" } // Mixin Extras, fabric ASM
     maven { url = "https://dvs1.progwml6.com/files/maven/" } // JEI
@@ -65,7 +65,7 @@ dependencies {
     modImplementation "curse.maven:kiwi-549404:3680804"
     //annotationProcessor "curse.maven:kiwi-549404:3680804"
     
-    modImplementation "curse.maven:secret-rooms-fabric-359248:3681186"
+    modImplementation "maven.modrinth:secret-rooms:1.3.1"
     modImplementation "curse.maven:arrp-463113:3680866"
     
     // create setup
