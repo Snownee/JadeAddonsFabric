@@ -1,10 +1,11 @@
 {
 "config.jade.plugin_secretrooms.jadeaddons": "Enabled",
+"config.jade.plugin_secretroomsmod.jadeaddons": "Enabled",
 "config.jade.plugin_create.blaze_burner": "Blaze Burner",
 "config.jade.plugin_create.crafting_blueprint": "Crafting Blueprint",
 "config.jade.plugin_create.placard": "Placard",
-"config.jade.plugin_create.contraption_inv": "Contraption Inventory",
 "config.jade.plugin_create.exact_block": "Contraption Exact Block",
+"config.jade.plugin_create.filter": "Filter",
 "config.jade.plugin_tconstruct.casting_table": "Casting Table",
 "config.jade.plugin_tconstruct.drain": "Drain & Duct",
 "config.jade.plugin_mcjtylib.jadeaddons": "Enabled",
@@ -26,6 +27,8 @@
 "jadeaddons.lootr.decay": "Decay in: %ss",
 "jadeaddons.lootr.refresh": "Refresh in: %ss",
 "jadeaddons.lootr.refreshed": "Refreshed!",
+
+"jadeaddons.pair": "%s: %s",
 
 "entity.tconstruct.glow_ball": "Glowball",
 "entity.tconstruct.efln_ball": "EFLN",

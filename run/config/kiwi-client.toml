@@ -1,10 +1,8 @@
 contributorCosmetic = ""
 globalTooltip = false
-tooltipWrapWidth = 200
 noMicrosoftTelemetry = true
 
 [debug]
 tagsTooltip = true
 debugTooltipMsg = false
-NBTTooltipFormatter = "vanilla"
 NBTTooltip = true

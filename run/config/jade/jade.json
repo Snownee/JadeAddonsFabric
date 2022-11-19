@@ -5,20 +5,21 @@
     "displayEntities": true,
     "displayMode": "TOGGLE",
     "hideFromDebug": true,
+    "hideFromTabList": true,
     "enableTextToSpeech": false,
     "ttsMode": "PRESS",
-    "maxHealthForRender": 40,
-    "maxHeartsPerLine": 10,
     "fluidMode": "ANY",
     "reachDistance": 0.0,
     "debug": false,
-    "itemModNameTooltip": true
+    "itemModNameTooltip": true,
+    "bossBarOverlapMode": "PUSH_DOWN",
+    "hintOverlayToggle": true
   },
   "overlay": {
-    "overlayPosX": 0.5,
+    "overlayPosX": 0.0,
     "overlayPosY": 1.0,
     "overlayScale": 1.0,
-    "overlayAnchorX": 0.5,
+    "overlayAnchorX": 0.0,
     "overlayAnchorY": 0.0,
     "overlaySquare": false,
     "flipMainHand": false,
@@ -63,7 +64,8 @@
       }
     },
     "activeTheme": "jade:dark",
-    "iconMode": "TOP"
+    "iconMode": "CENTERED",
+    "animation": true
   },
   "formatting": {
     "modName": "§9§o%s"

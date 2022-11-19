@@ -1,28 +1,36 @@
 {
   "minecraft": {
+    "block_inventory.detailed_amount": 54,
     "furnace": true,
     "chicken_egg": true,
+    "block_inventory.items_per_line": 9,
     "jukebox": true,
     "brewing_stand": true,
+    "animal_owner": true,
+    "block_inventory.normal_amount": 9,
+    "harvest_tool.effective_tool": true,
     "note_block": true,
     "beehive": true,
+    "block_inventory.show_name_amount": 5,
     "block_inventory": true,
     "player_head": true,
     "block_states": false,
     "lectern": true,
-    "effective_tool": true,
     "entity_armor": true,
     "harvest_tool": true,
     "armor_stand": true,
-    "chested_horse": true,
+    "fluid": true,
     "horse_stats": true,
     "item_tooltip": true,
     "entity_health": true,
-    "breaking_progress": true,
+    "energy_storage": true,
+    "entity_armor.max_for_render": 40,
     "enchantment_power": true,
+    "breaking_progress": true,
     "tnt_stability": true,
     "villager_profession": true,
     "mob_breeding": true,
+    "entity_health.icons_per_line": 10,
     "item_frame": true,
     "crop_progress": true,
     "total_enchantment_power": true,
@@ -30,20 +38,28 @@
     "command_block": true,
     "mob_growth": true,
     "painting": true,
-    "harvest_tool_new_line": false,
+    "harvest_tool.new_line": false,
+    "entity_health.max_for_render": 40,
     "mob_spawner": true,
     "redstone": true
   },
+  "create": {
+    "filter": true,
+    "blaze_burner": true,
+    "exact_block": true,
+    "crafting_blueprint": true,
+    "placard": true
+  },
   "jade": {
-    "registry_name": false,
+    "coordinates.rel": false,
+    "distance": false,
+    "block_face": false,
+    "coordinates": false,
+    "registry_name": "OFF",
     "mod_name": true
   },
-  "create": {
-    "contraption_inv": true,
-    "blaze_burner": true,
-    "crafting_blueprint": true,
-    "exact_block": true,
-    "placard": true
+  "modern_industrialization": {
+    "pipe": true
   },
   "lootr": {
     "info": true

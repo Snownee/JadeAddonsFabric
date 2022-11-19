@@ -1,0 +1,13 @@
+blacklistedOres = []
+enableNoJeiMessage = true
+spawnWithGuideBook = true
+respawnWithGuideBook = true
+disableFuelTooltips = false
+disableItemTagTooltips = false
+newVersionMessage = true
+enableHatchPlacementOverlay = true
+colorWaterLava = true
+enableDebugCommands = false
+enableBidirectionalEnergyCompat = false
+enableAe2Integration = true
+generateOres = true

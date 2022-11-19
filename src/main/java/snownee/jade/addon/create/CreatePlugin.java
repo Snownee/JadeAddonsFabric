@@ -1,5 +1,7 @@
 package snownee.jade.addon.create;
 
+import org.jetbrains.annotations.Nullable;
+
 import com.simibubi.create.content.contraptions.components.structureMovement.AbstractContraptionEntity;
 import com.simibubi.create.content.contraptions.components.structureMovement.Contraption;
 import com.simibubi.create.content.contraptions.processing.burner.BlazeBurnerBlock;
@@ -18,12 +20,15 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate.StructureBlockInfo;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.HitResult.Type;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import snownee.jade.api.Accessor;
 import snownee.jade.api.EntityAccessor;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
@@ -40,12 +45,14 @@ public class CreatePlugin implements IWailaPlugin {
 	public static final ResourceLocation BLAZE_BURNER = new ResourceLocation(ID, "blaze_burner");
 	public static final ResourceLocation CONTRAPTION_INVENTORY = new ResourceLocation(ID, "contraption_inv");
 	public static final ResourceLocation CONTRAPTION_EXACT_BLOCK = new ResourceLocation(ID, "exact_block");
+	public static final ResourceLocation FILTER = new ResourceLocation(ID, "filter");
 	static IWailaClientRegistration client;
 
 	@Override
 	public void register(IWailaCommonRegistration registration) {
 		registration.registerBlockDataProvider(BlazeBurnerProvider.INSTANCE, BlazeBurnerTileEntity.class);
-		registration.registerEntityDataProvider(ContraptionInventoryProvider.INSTANCE, AbstractContraptionEntity.class);
+		registration.registerItemStorage(ContraptionItemStorageProvider.INSTANCE, AbstractContraptionEntity.class);
+		registration.registerFluidStorage(ContraptionFluidStorageProvider.INSTANCE, AbstractContraptionEntity.class);
 	}
 
 	// See ContraptionHandlerClient
@@ -58,9 +65,12 @@ public class CreatePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(PlacardProvider.INSTANCE, PlacardBlock.class);
 		registration.registerBlockIcon(PlacardProvider.INSTANCE, PlacardBlock.class);
 		registration.registerBlockComponent(BlazeBurnerProvider.INSTANCE, BlazeBurnerBlock.class);
-		registration.registerEntityComponent(ContraptionInventoryProvider.INSTANCE, AbstractContraptionEntity.class);
 		registration.registerEntityIcon(ContraptionExactBlockProvider.INSTANCE, AbstractContraptionEntity.class);
 		registration.registerEntityComponent(ContraptionExactBlockProvider.INSTANCE, AbstractContraptionEntity.class);
+		registration.registerBlockComponent(FilterProvider.INSTANCE, Block.class);
+
+		registration.registerItemStorageClient(ContraptionItemStorageProvider.INSTANCE);
+		registration.registerFluidStorageClient(ContraptionFluidStorageProvider.INSTANCE);
 
 		RayTracing.ENTITY_FILTER = RayTracing.ENTITY_FILTER.and(e -> {
 			if (!(e instanceof AbstractContraptionEntity)) {
@@ -93,27 +103,30 @@ public class CreatePlugin implements IWailaPlugin {
 			return predicateResult != null && !predicateResult.missed();
 		});
 
-		registration.addRayTraceCallback((hit, accessor, original) -> {
-			BezierPointSelection result = TrackBlockOutline.result;
-			if (result == null) {
-				return accessor;
-			}
-			if (accessor instanceof EntityAccessor) {
-				return accessor;
-			}
-			BlockHitResult hitResult = new BlockHitResult(Vec3.atCenterOf(result.te().getBlockPos()), Direction.UP, result.te().getBlockPos(), false);
-			/* off */
-			return registration.blockAccessor()
-					.blockState(result.te().getBlockState())
-					.blockEntity(result.te())
-					.level(Minecraft.getInstance().level)
-					.player(Minecraft.getInstance().player)
-					.hit(hitResult)
-					.serverData(ObjectDataCenter.getServerData())
-					.serverConnected(ObjectDataCenter.serverConnected)
-					.build();
-			/* on */
-		});
+		registration.addRayTraceCallback(this::override);
+	}
+
+	@Environment(EnvType.CLIENT)
+	public Accessor<?> override(HitResult hitResult, @Nullable Accessor<?> accessor, @Nullable Accessor<?> originalAccessor) {
+		BezierPointSelection result = TrackBlockOutline.result;
+		if (result == null) {
+			return accessor;
+		}
+		if (originalAccessor instanceof EntityAccessor) {
+			return accessor;
+		}
+		BlockHitResult trackHit = new BlockHitResult(Vec3.atCenterOf(result.te().getBlockPos()), Direction.UP, result.te().getBlockPos(), false);
+		/* off */
+		return client.blockAccessor()
+				.blockState(result.te().getBlockState())
+				.blockEntity(result.te())
+				.level(Minecraft.getInstance().level)
+				.player(Minecraft.getInstance().player)
+				.hit(trackHit)
+				.serverConnected(ObjectDataCenter.serverConnected)
+				.serverData(ObjectDataCenter.getServerData())
+				.build();
+		/* on */
 	}
 
 }

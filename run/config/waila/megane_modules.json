@@ -1,0 +1,10 @@
+{
+  "modules": {
+    "modern_industrialization": {
+      "aztech.modern_industrialization.compat.megane.MIMeganeModule": true
+    },
+    "megane-vanilla": {
+      "lol.bai.megane.module.vanilla.MeganeVanilla": true
+    }
+  }
+}

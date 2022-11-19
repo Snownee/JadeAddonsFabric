@@ -15,14 +15,14 @@ import snownee.jade.impl.config.PluginConfig;
 @WailaPlugin(SecretRoomsPlugin.ID)
 public class SecretRoomsPlugin implements IWailaPlugin {
 	public static final String ID = "secretrooms";
-	public static final ResourceLocation MAIN = new ResourceLocation(ID, JadeAddons.ID);
+	public static final ResourceLocation ENABLED = new ResourceLocation(ID, JadeAddons.ID);
 
 	@Override
 	public void registerClient(IWailaClientRegistration registration) {
-		registration.addConfig(MAIN, true);
+		registration.addConfig(ENABLED, true);
 		registration.hideTarget(SecretRooms.SOLID_AIR_BLOCK);
 		registration.addRayTraceCallback((hit, accessor, original) -> {
-			if (!PluginConfig.INSTANCE.get(MAIN))
+			if (!PluginConfig.INSTANCE.get(ENABLED))
 				return accessor;
 			if (accessor instanceof BlockAccessor blockAccessor) {
 				Block block = blockAccessor.getBlock();

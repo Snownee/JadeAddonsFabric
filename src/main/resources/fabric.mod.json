@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "lychee",
+  "id": "jadeaddons",
   "version": "${version}",
 
   "name": "Jade Addons",
@@ -19,15 +19,17 @@
     "jade": [
       "snownee.jade.addon.create.CreatePlugin",
       "snownee.jade.addon.lootr.LootrPlugin",
-      "snownee.jade.addon.secret_rooms.SecretRoomsPlugin"
+      "snownee.jade.addon.mi.MIPlugin",
+      "snownee.jade.addon.secret_rooms.SecretRoomsPlugin",
+      "snownee.jade.addon.team_reborn_energy.TeamRebornEnergyPlugin"
     ]
   },
   "mixins": [ "jadeaddons.mixins.json" ],
 
   "depends": {
-    "jade": ">=5.99.8",
+    "jade": ">=8.6",
     "fabric": "*",
-    "minecraft": ">=1.18.2",
+    "minecraft": ">=1.19.2",
     "java": ">=17"
   },
 

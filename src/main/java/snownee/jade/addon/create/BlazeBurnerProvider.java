@@ -8,14 +8,13 @@ import com.simibubi.create.content.contraptions.processing.burner.BlazeBurnerTil
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import snownee.jade.Jade;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
 import snownee.jade.api.IServerDataProvider;
@@ -45,13 +44,12 @@ public enum BlazeBurnerProvider implements IBlockComponentProvider, IServerDataP
 		if (activeFuel == FuelType.NONE) {
 			return;
 		}
-		IElementHelper elements = tooltip.getElementHelper();
 		ItemStack item = new ItemStack(activeFuel == FuelType.SPECIAL ? Items.SOUL_CAMPFIRE : Items.CAMPFIRE);
-		tooltip.add(Jade.smallItem(elements, item));
+		tooltip.add(IElementHelper.get().smallItem(item));
 		if (isCreative) {
-			tooltip.append(new TranslatableComponent("jade.infinity"));
+			tooltip.append(Component.translatable("jade.infinity"));
 		} else {
-			tooltip.append(new TranslatableComponent("jade.seconds", compound.getInt("burnTimeRemaining") / 20));
+			tooltip.append(Component.translatable("jade.seconds", compound.getInt("burnTimeRemaining") / 20));
 		}
 	}
 
