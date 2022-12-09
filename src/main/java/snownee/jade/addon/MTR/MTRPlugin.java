@@ -1,6 +1,7 @@
 package snownee.jade.addon.MTR;
 
 import com.github.spaceman.SecretRooms;
+import mtr.*;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -21,8 +22,11 @@ public class MTRPlugin implements IWailaPlugin {
 	@Override
 	public void registerClient(IWailaClientRegistration registration) {
 		registration.addConfig(ENABLED, true);
-		registration.hideTarget(SecretRooms.SOLID_AIR_BLOCK);
-		registration.addRayTraceCallback((hit, accessor, original) -> {
+		System.out.println("WORKING AAAAAAAAAAAAAAAAAAAAAA");
+		//registration.hideTarget(SecretRooms.SOLID_AIR_BLOCK);
+		//registration.hideTarget();
+
+		/*registration.addRayTraceCallback((hit, accessor, original) -> {
 			if (!PluginConfig.INSTANCE.get(ENABLED))
 				return accessor;
 			if (accessor instanceof BlockAccessor blockAccessor) {
@@ -33,6 +37,6 @@ public class MTRPlugin implements IWailaPlugin {
 				}
 			}
 			return accessor;
-		});
+		});*/
 	}
 }
