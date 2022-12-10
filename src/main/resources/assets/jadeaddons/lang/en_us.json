@@ -13,6 +13,9 @@
 "config.jade.plugin_deepresonance.generator_part": "Generator Part",
 "config.jade.plugin_lootr.info": "Information",
 
+  "config.jade.plugin_mtr.jadeaddons": "Enabled",
+  "config.jade.plugin_mtr.escalator_step": "Escalator Step",
+
 "jadeaddons.mcjtylib.infused": "Infused: %s%%",
 "jadeaddons.mcjtylib.ownedBy": "Owned by: %s",
 "jadeaddons.mcjtylib.ownedBy.withChannel": "Owned by: %s (channel %s)",

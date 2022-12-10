@@ -58,8 +58,9 @@
     "registry_name": "OFF",
     "mod_name": true
   },
-  "modern_industrialization": {
-    "pipe": true
+  "mtr": {
+    "escalator_step": true,
+    "jadeaddons": false
   },
   "lootr": {
     "info": true

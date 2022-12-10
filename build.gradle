@@ -1,4 +1,5 @@
 plugins {
+    id("java-library") // or id("application")
     id 'fabric-loom' version '1.0-SNAPSHOT'
     id 'maven-publish'
 }
@@ -91,7 +92,7 @@ dependencies {
     //modImplementation "curse.maven:jade-324717:4096407"
 
     //modImplementation fileTree(dir: 'libs', include: '*.jar') //Had to do this since it was not finding the file for some reason. augh - mark
-    dependencies { implementation name: 'MTR-fabric-1.19.2-3.1.6' }
+    dependencies { modImplementation name: 'MTR-fabric-1.19.2-3.1.6' }
 
     //modImplementation name: "MTR-fabric-1.19.2-3.1.6"
     //modImplementation "curse.maven:mtr-266707:4050642"
@@ -182,10 +183,16 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 java {
+    //this forces it to buils using java 17. I was having problems where it would keep trying to use java 19. - mark
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+
     // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
     // if it is present.
     // If you remove this line, sources will not be generated.
     // withSourcesJar()
+
 }
 
 jar {
