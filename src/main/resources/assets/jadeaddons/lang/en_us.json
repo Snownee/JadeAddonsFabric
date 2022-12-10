@@ -14,7 +14,8 @@
 "config.jade.plugin_lootr.info": "Information",
 
   "config.jade.plugin_mtr.jadeaddons": "Enabled",
-  "config.jade.plugin_mtr.escalator_step": "Escalator Step",
+  "config.jade.plugin_mtr.escalator_step": "Escalator Step (Unfinished)",
+  "config.jade.plugin_mtr.ticket_barrier": "Ticket Barrier (Unfinished)",
 
 "jadeaddons.mcjtylib.infused": "Infused: %s%%",
 "jadeaddons.mcjtylib.ownedBy": "Owned by: %s",
