@@ -7,7 +7,7 @@ import snownee.jade.api.IBlockComponentProvider;
 import snownee.jade.api.ITooltip;
 import snownee.jade.api.config.IPluginConfig;
 
-public enum MTRProvider implements IBlockComponentProvider {
+public enum MTREscalatorProvider implements IBlockComponentProvider {
 
 	INSTANCE;
 

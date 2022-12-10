@@ -18,7 +18,7 @@ public class MTRPlugin implements IWailaPlugin {
 	public void registerClient(IWailaClientRegistration registration) {
 		registration.addConfig(ENABLED, true);
 		registration.hideTarget(EntityTypes.SEAT.get());
-		registration.registerBlockComponent(MTRProvider.INSTANCE, BlockEscalatorStep.class);
+		registration.registerBlockComponent(MTREscalatorProvider.INSTANCE, BlockEscalatorStep.class);
 		//registration.hideTarget();
 	}
 }
