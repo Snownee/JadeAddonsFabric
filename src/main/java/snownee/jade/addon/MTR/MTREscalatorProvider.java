@@ -36,34 +36,34 @@ public enum MTREscalatorProvider implements IBlockComponentProvider {
 			switch (facing){
 				case NORTH:
 					if (direction){
-						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_North"));
+						tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_North"));
 					}
 					else{
-						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_South"));
+						tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_South"));
 					}
 					break;
 				case SOUTH:
 					if (direction){
-						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_South"));
+						tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_South"));
 					}
 					else{
-						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_North"));
+						tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_North"));
 					}
 					break;
 				case EAST:
 					if (direction){
-						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_East"));
+						tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_East"));
 					}
 					else{
-						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_West"));
+						tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_West"));
 					}
 					break;
 				case WEST:
 					if (direction){
-						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_West"));
+						tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_West"));
 					}
 					else{
-						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_East"));
+						tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_East"));
 					}
 					break;
 			}
@@ -71,10 +71,10 @@ public enum MTREscalatorProvider implements IBlockComponentProvider {
 
 		if (Objects.equals(ORIENTATIONToString, "SLOPE")){
 			if (direction){
-				tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_Upward"));
+				tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_Upward"));
 			}
 			else{
-				tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_Downward"));
+				tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_Downward"));
 			}
 		}
 

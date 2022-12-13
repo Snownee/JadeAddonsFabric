@@ -13,15 +13,15 @@
 "config.jade.plugin_deepresonance.generator_part": "Generator Part",
 "config.jade.plugin_lootr.info": "Information",
 
-  "config.jade.plugin_mtr.jadeaddons": "Enabled",
-  "config.jade.plugin_mtr.escalator_step": "Escalator Step Info",
+"config.jade.plugin_mtr.jadeaddons": "Enabled",
+"config.jade.plugin_mtr.escalator_step": "Escalator Step Info",
 
-  "jadeaddons.mtr.escalator_step_Upward": "Moving Upward",
-  "jadeaddons.mtr.escalator_step_Downward": "Moving Downward",
-  "jadeaddons.mtr.escalator_step_North": "Moving North",
-  "jadeaddons.mtr.escalator_step_South": "Moving South",
-  "jadeaddons.mtr.escalator_step_East": "Moving East",
-  "jadeaddons.mtr.escalator_step_West": "Moving West",
+"jadeaddons.mtr.escalator_step_Upward": "Moving Upward",
+"jadeaddons.mtr.escalator_step_Downward": "Moving Downward",
+"jadeaddons.mtr.escalator_step_North": "Moving North",
+"jadeaddons.mtr.escalator_step_South": "Moving South",
+"jadeaddons.mtr.escalator_step_East": "Moving East",
+"jadeaddons.mtr.escalator_step_West": "Moving West",
 
 "jadeaddons.mcjtylib.infused": "Infused: %s%%",
 "jadeaddons.mcjtylib.ownedBy": "Owned by: %s",
