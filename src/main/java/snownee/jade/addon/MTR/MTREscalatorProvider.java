@@ -78,6 +78,23 @@ public enum MTREscalatorProvider implements IBlockComponentProvider {
 			}
 		}
 
+		if (Objects.equals(ORIENTATIONToString, "TRANSITION_BOTTOM")){
+			if (direction){
+				tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_Upward"));
+			}
+			else{
+				tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_Downward"));
+			}
+		}
+
+		if (Objects.equals(ORIENTATIONToString, "TRANSITION_TOP")){
+			if (direction){
+				tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_Upward"));
+			}
+			else{
+				tooltip.add(Component.translatable("jadeaddons.mtr.escalator_step_Downward"));
+			}
+		}
 
 		//tooltip.append(Component.translatable("(Add direction info here)" + direction + " " + facing + " " + IBlock.getStatePropertySafe(blockstate, ORIENTATION)));
 	}
