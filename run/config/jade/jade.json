@@ -8,12 +8,12 @@
     "hideFromTabList": true,
     "enableTextToSpeech": false,
     "ttsMode": "PRESS",
-    "fluidMode": "ANY",
+    "fluidMode": "NONE",
     "reachDistance": 0.0,
     "debug": false,
     "itemModNameTooltip": true,
     "bossBarOverlapMode": "PUSH_DOWN",
-    "hintOverlayToggle": true
+    "hintOverlayToggle": false
   },
   "overlay": {
     "overlayPosX": 0.0,

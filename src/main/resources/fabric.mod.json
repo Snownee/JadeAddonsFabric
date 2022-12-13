@@ -21,7 +21,8 @@
       "snownee.jade.addon.lootr.LootrPlugin",
       "snownee.jade.addon.mi.MIPlugin",
       "snownee.jade.addon.secret_rooms.SecretRoomsPlugin",
-      "snownee.jade.addon.team_reborn_energy.TeamRebornEnergyPlugin"
+      "snownee.jade.addon.team_reborn_energy.TeamRebornEnergyPlugin",
+      "snownee.jade.addon.MTR.MTRPlugin"
     ]
   },
   "mixins": [ "jadeaddons.mixins.json" ],
