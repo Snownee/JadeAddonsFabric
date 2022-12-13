@@ -1,20 +1,14 @@
 package snownee.jade.addon.MTR;
 
-import mtr.block.BlockEscalatorBase;
-import mtr.block.BlockEscalatorStep;
 import mtr.block.IBlock;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
 import snownee.jade.api.ITooltip;
 import snownee.jade.api.config.IPluginConfig;
-import mtr.block.IBlock.EnumSide;
 
 import java.util.Objects;
 

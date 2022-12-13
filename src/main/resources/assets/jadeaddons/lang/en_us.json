@@ -14,7 +14,7 @@
 "config.jade.plugin_lootr.info": "Information",
 
   "config.jade.plugin_mtr.jadeaddons": "Enabled",
-  "config.jade.plugin_mtr.escalator_step": "Escalator Step",
+  "config.jade.plugin_mtr.escalator_step": "Escalator Step Info",
 
   "jadeaddons.mtr.escalator_step_Upward": "Moving Upward",
   "jadeaddons.mtr.escalator_step_Downward": "Moving Downward",
