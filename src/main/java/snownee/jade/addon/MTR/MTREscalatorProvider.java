@@ -38,40 +38,40 @@ public enum MTREscalatorProvider implements IBlockComponentProvider {
 
 		//System.out.println(ORIENTATIONToString);
 
-		//All these if statements can be simplified. Just too tired to fix it at time of coding this. -mark
-
 		if (Objects.equals(ORIENTATIONToString, "FLAT")){
-			if (facing == Direction.NORTH){
-				if (direction){
-					tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_North"));
-				}
-				else{
-					tooltip.append(Component.translatable("Moving South"));
-				}
-			}
-			if (facing == Direction.SOUTH){
-				if (direction){
-					tooltip.append(Component.translatable("Moving South"));
-				}
-				else{
-					tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_North"));
-				}
-			}
-			if (facing == Direction.EAST){
-				if (direction){
-					tooltip.append(Component.translatable("Moving East"));
-				}
-				else{
-					tooltip.append(Component.translatable("Moving West"));
-				}
-			}
-			if (facing == Direction.WEST){
-				if (direction){
-					tooltip.append(Component.translatable("Moving West"));
-				}
-				else{
-					tooltip.append(Component.translatable("Moving East"));
-				}
+			switch (facing){
+				case NORTH:
+					if (direction){
+						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_North"));
+					}
+					else{
+						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_South"));
+					}
+					break;
+				case SOUTH:
+					if (direction){
+						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_South"));
+					}
+					else{
+						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_North"));
+					}
+					break;
+				case EAST:
+					if (direction){
+						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_East"));
+					}
+					else{
+						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_West"));
+					}
+					break;
+				case WEST:
+					if (direction){
+						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_West"));
+					}
+					else{
+						tooltip.append(Component.translatable("jadeaddons.mtr.escalator_step_East"));
+					}
+					break;
 			}
 		}
 
