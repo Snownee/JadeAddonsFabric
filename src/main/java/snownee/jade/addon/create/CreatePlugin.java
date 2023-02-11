@@ -4,8 +4,11 @@ import org.jetbrains.annotations.Nullable;
 
 import com.simibubi.create.content.contraptions.components.structureMovement.AbstractContraptionEntity;
 import com.simibubi.create.content.contraptions.components.structureMovement.Contraption;
+import com.simibubi.create.content.contraptions.fluids.tank.FluidTankTileEntity;
 import com.simibubi.create.content.contraptions.processing.burner.BlazeBurnerBlock;
 import com.simibubi.create.content.contraptions.processing.burner.BlazeBurnerTileEntity;
+import com.simibubi.create.content.curiosities.armor.CopperBacktankBlock;
+import com.simibubi.create.content.curiosities.armor.CopperBacktankTileEntity;
 import com.simibubi.create.content.curiosities.deco.PlacardBlock;
 import com.simibubi.create.content.curiosities.tools.BlueprintEntity;
 import com.simibubi.create.content.logistics.trains.track.TrackBlockOutline;
@@ -34,7 +37,6 @@ import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
 import snownee.jade.api.WailaPlugin;
-import snownee.jade.impl.ObjectDataCenter;
 import snownee.jade.overlay.RayTracing;
 
 @WailaPlugin(CreatePlugin.ID)
@@ -46,13 +48,20 @@ public class CreatePlugin implements IWailaPlugin {
 	public static final ResourceLocation CONTRAPTION_INVENTORY = new ResourceLocation(ID, "contraption_inv");
 	public static final ResourceLocation CONTRAPTION_EXACT_BLOCK = new ResourceLocation(ID, "exact_block");
 	public static final ResourceLocation FILTER = new ResourceLocation(ID, "filter");
+	public static final ResourceLocation HIDE_BOILER_TANKS = new ResourceLocation(ID, "hide_boiler_tanks");
+	public static final ResourceLocation COPPER_BACKTANK = new ResourceLocation(ID, "copper_backtank");
+	public static final ResourceLocation GOGGLES = new ResourceLocation(ID, "goggles");
+	public static final ResourceLocation REQUIRES_GOGGLES = new ResourceLocation(ID, "goggles.requires_goggles");
+	public static final ResourceLocation GOGGLES_DETAILED = new ResourceLocation(ID, "goggles.detailed");
 	static IWailaClientRegistration client;
 
 	@Override
 	public void register(IWailaCommonRegistration registration) {
 		registration.registerBlockDataProvider(BlazeBurnerProvider.INSTANCE, BlazeBurnerTileEntity.class);
+		registration.registerBlockDataProvider(CopperBacktankProvider.INSTANCE, CopperBacktankTileEntity.class);
 		registration.registerItemStorage(ContraptionItemStorageProvider.INSTANCE, AbstractContraptionEntity.class);
 		registration.registerFluidStorage(ContraptionFluidStorageProvider.INSTANCE, AbstractContraptionEntity.class);
+		registration.registerFluidStorage(HideBoilerHandlerProvider.INSTANCE, FluidTankTileEntity.class);
 	}
 
 	// See ContraptionHandlerClient
@@ -60,6 +69,8 @@ public class CreatePlugin implements IWailaPlugin {
 	@Environment(EnvType.CLIENT)
 	public void registerClient(IWailaClientRegistration registration) {
 		client = registration;
+		registration.addConfig(REQUIRES_GOGGLES, true);
+		registration.addConfig(GOGGLES_DETAILED, false);
 		registration.registerEntityComponent(CraftingBlueprintProvider.INSTANCE, BlueprintEntity.class);
 		registration.registerEntityIcon(CraftingBlueprintProvider.INSTANCE, BlueprintEntity.class);
 		registration.registerBlockComponent(PlacardProvider.INSTANCE, PlacardBlock.class);
@@ -68,9 +79,12 @@ public class CreatePlugin implements IWailaPlugin {
 		registration.registerEntityIcon(ContraptionExactBlockProvider.INSTANCE, AbstractContraptionEntity.class);
 		registration.registerEntityComponent(ContraptionExactBlockProvider.INSTANCE, AbstractContraptionEntity.class);
 		registration.registerBlockComponent(FilterProvider.INSTANCE, Block.class);
+		registration.registerBlockComponent(CopperBacktankProvider.INSTANCE, CopperBacktankBlock.class);
+		registration.registerBlockComponent(new GogglesProvider(), Block.class);
 
 		registration.registerItemStorageClient(ContraptionItemStorageProvider.INSTANCE);
 		registration.registerFluidStorageClient(ContraptionFluidStorageProvider.INSTANCE);
+		registration.registerFluidStorageClient(HideBoilerHandlerProvider.INSTANCE);
 
 		RayTracing.ENTITY_FILTER = RayTracing.ENTITY_FILTER.and(e -> {
 			if (!(e instanceof AbstractContraptionEntity)) {
@@ -120,11 +134,7 @@ public class CreatePlugin implements IWailaPlugin {
 		return client.blockAccessor()
 				.blockState(result.te().getBlockState())
 				.blockEntity(result.te())
-				.level(Minecraft.getInstance().level)
-				.player(Minecraft.getInstance().player)
 				.hit(trackHit)
-				.serverConnected(ObjectDataCenter.serverConnected)
-				.serverData(ObjectDataCenter.getServerData())
 				.build();
 		/* on */
 	}

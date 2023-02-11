@@ -2,12 +2,15 @@
   "minecraft": {
     "block_inventory.detailed_amount": 54,
     "furnace": true,
+    "harvest_tool.show_unbreakable": true,
     "chicken_egg": true,
     "block_inventory.items_per_line": 9,
     "jukebox": true,
     "brewing_stand": true,
     "animal_owner": true,
     "block_inventory.normal_amount": 9,
+    "energy_storage.detailed": false,
+    "animal_owner.fetch_names": true,
     "harvest_tool.effective_tool": true,
     "note_block": true,
     "beehive": true,
@@ -33,6 +36,7 @@
     "entity_health.icons_per_line": 10,
     "item_frame": true,
     "crop_progress": true,
+    "fluid.detailed": false,
     "total_enchantment_power": true,
     "potion_effects": true,
     "command_block": true,
@@ -43,13 +47,6 @@
     "mob_spawner": true,
     "redstone": true
   },
-  "create": {
-    "filter": true,
-    "blaze_burner": true,
-    "exact_block": true,
-    "crafting_blueprint": true,
-    "placard": true
-  },
   "jade": {
     "coordinates.rel": false,
     "distance": false,
@@ -58,8 +55,16 @@
     "registry_name": "OFF",
     "mod_name": true
   },
-  "modern_industrialization": {
-    "pipe": true
+  "create": {
+    "filter": true,
+    "goggles.requires_goggles": true,
+    "goggles": false,
+    "copper_backtank": true,
+    "blaze_burner": true,
+    "exact_block": true,
+    "crafting_blueprint": true,
+    "goggles.detailed": false,
+    "placard": true
   },
   "lootr": {
     "info": true

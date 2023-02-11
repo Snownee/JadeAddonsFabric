@@ -82,7 +82,7 @@
 		editingMode = false
 		#.
 		#Slow down a ponder scene whenever there is text on screen.
-		comfyReading = false
+		comfyReading = true
 
 	#.
 	#Railway related settings

@@ -1,4 +1,5 @@
 {
+"config.jade.plugin_jadeaddons.equipment_requirement": "Equipment Requirement Tag",
 "config.jade.plugin_secretrooms.jadeaddons": "Enabled",
 "config.jade.plugin_secretroomsmod.jadeaddons": "Enabled",
 "config.jade.plugin_create.blaze_burner": "Blaze Burner",
@@ -6,12 +7,18 @@
 "config.jade.plugin_create.placard": "Placard",
 "config.jade.plugin_create.exact_block": "Contraption Exact Block",
 "config.jade.plugin_create.filter": "Filter",
+"config.jade.plugin_create.copper_backtank": "Copper Backtank",
+"config.jade.plugin_create.goggles": "Integrate Goggles",
+"config.jade.plugin_create.goggles.requires_goggles": "Requires Goggles",
+"config.jade.plugin_create.goggles.detailed": "Detailed-Only",
 "config.jade.plugin_tconstruct.casting_table": "Casting Table",
 "config.jade.plugin_tconstruct.drain": "Drain & Duct",
 "config.jade.plugin_mcjtylib.jadeaddons": "Enabled",
 "config.jade.plugin_deepresonance.crystal": "Crystal",
 "config.jade.plugin_deepresonance.generator_part": "Generator Part",
 "config.jade.plugin_lootr.info": "Information",
+
+"jadeaddons.create.backtank_air": "Air: %s/%s",
 
 "jadeaddons.mcjtylib.infused": "Infused: %s%%",
 "jadeaddons.mcjtylib.ownedBy": "Owned by: %s",
@@ -27,8 +34,6 @@
 "jadeaddons.lootr.decay": "Decay in: %ss",
 "jadeaddons.lootr.refresh": "Refresh in: %ss",
 "jadeaddons.lootr.refreshed": "Refreshed!",
-
-"jadeaddons.pair": "%s: %s",
 
 "entity.tconstruct.glow_ball": "Glowball",
 "entity.tconstruct.efln_ball": "EFLN",
