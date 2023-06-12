@@ -11,14 +11,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import snownee.jade.addon.core.ObjectNameProvider;
 import snownee.jade.api.EntityAccessor;
 import snownee.jade.api.IEntityComponentProvider;
 import snownee.jade.api.ITooltip;
 import snownee.jade.api.Identifiers;
+import snownee.jade.api.TooltipPosition;
 import snownee.jade.api.config.IPluginConfig;
+import snownee.jade.api.config.IWailaConfig;
 import snownee.jade.api.ui.IElement;
-import snownee.jade.impl.WailaClientRegistration;
+import snownee.jade.api.ui.IElementHelper;
 
 public enum ContraptionExactBlockProvider implements IEntityComponentProvider {
 	INSTANCE;
@@ -29,11 +30,11 @@ public enum ContraptionExactBlockProvider implements IEntityComponentProvider {
 
 	@Override
 	public @Nullable IElement getIcon(EntityAccessor accessor, IPluginConfig config, IElement currentIcon) {
-		if (!validate()) {
-			return null;
+		if (validate()) {
+			ItemStack stack = hitBlock.getBlock().getCloneItemStack(accessor.getLevel(), hitResult.getBlockPos(), hitBlock);
+			return IElementHelper.get().item(stack);
 		}
-		ItemStack stack = hitBlock.getBlock().getCloneItemStack(accessor.getLevel(), hitResult.getBlockPos(), hitBlock);
-		return CreatePlugin.client.getElementHelper().item(stack);
+		return null;
 	}
 
 	@Override
@@ -42,7 +43,7 @@ public enum ContraptionExactBlockProvider implements IEntityComponentProvider {
 			return;
 		}
 		Component name = null;
-		if (WailaClientRegistration.INSTANCE.shouldPick(hitBlock)) {
+		if (CreatePlugin.client.shouldPick(hitBlock)) {
 			ItemStack pick = hitBlock.getBlock().getCloneItemStack(accessor.getLevel(), hitResult.getBlockPos(), hitBlock);
 			if (pick != null && !pick.isEmpty())
 				name = pick.getHoverName();
@@ -61,7 +62,7 @@ public enum ContraptionExactBlockProvider implements IEntityComponentProvider {
 			}
 		}
 		tooltip.remove(Identifiers.CORE_OBJECT_NAME);
-		tooltip.add(0, config.getWailaConfig().getFormatting().title(name.getString()).copy().withStyle(ChatFormatting.ITALIC), Identifiers.CORE_OBJECT_NAME);
+		tooltip.add(0, IWailaConfig.get().getFormatting().title(name).copy().withStyle(ChatFormatting.ITALIC), Identifiers.CORE_OBJECT_NAME);
 	}
 
 	public void setHit(BlockHitResult hitResult, BlockState hitBlock) {
@@ -81,7 +82,7 @@ public enum ContraptionExactBlockProvider implements IEntityComponentProvider {
 
 	@Override
 	public int getDefaultPriority() {
-		return ObjectNameProvider.INSTANCE.getDefaultPriority() + 1;
+		return TooltipPosition.HEAD;
 	}
 
 }

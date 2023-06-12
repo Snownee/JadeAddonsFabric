@@ -3,7 +3,8 @@
   "package": "snownee.jade.addon.mixin",
   "compatibilityLevel": "JAVA_16",
   "refmap": "jadeaddons.refmap.json",
-  "mixins": [
+  "client": [
+    "create.GoggleOverlayRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
