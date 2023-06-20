@@ -13,7 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import snownee.jade.overlay.OverlayRenderer;
 
-@Mixin(PonderTooltipHandler.class)
+@Mixin(value = PonderTooltipHandler.class, remap = false)
 public class PonderTooltipHandlerMixin {
 	@Inject(method = "addToTooltip", at = @At("HEAD"), cancellable = true)
 	private static void jadeaddons$addToTooltip(ItemStack stack, List<Component> tooltip, CallbackInfo ci) {

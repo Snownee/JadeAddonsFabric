@@ -18,7 +18,7 @@ import snownee.jade.api.IServerDataProvider;
 import snownee.jade.api.ITooltip;
 import snownee.jade.api.config.IPluginConfig;
 
-public enum CopperBacktankProvider implements IBlockComponentProvider, IServerDataProvider<BlockEntity> {
+public enum BacktankProvider implements IBlockComponentProvider, IServerDataProvider<BlockEntity> {
 	INSTANCE;
 
 	@Override
@@ -45,7 +45,7 @@ public enum CopperBacktankProvider implements IBlockComponentProvider, IServerDa
 
 	@Override
 	public ResourceLocation getUid() {
-		return CreatePlugin.COPPER_BACKTANK;
+		return CreatePlugin.BACKTANK_CAPACITY;
 	}
 
 }

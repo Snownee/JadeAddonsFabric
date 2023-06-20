@@ -48,7 +48,7 @@ public class CreatePlugin implements IWailaPlugin {
 	public static final ResourceLocation CONTRAPTION_EXACT_BLOCK = new ResourceLocation(ID, "exact_block");
 	public static final ResourceLocation FILTER = new ResourceLocation(ID, "filter");
 	public static final ResourceLocation HIDE_BOILER_TANKS = new ResourceLocation(ID, "hide_boiler_tanks");
-	public static final ResourceLocation COPPER_BACKTANK = new ResourceLocation(ID, "copper_backtank");
+	public static final ResourceLocation BACKTANK_CAPACITY = new ResourceLocation(ID, "backtank_capacity");
 	public static final ResourceLocation GOGGLES = new ResourceLocation(ID, "goggles");
 	public static final ResourceLocation REQUIRES_GOGGLES = new ResourceLocation(ID, "goggles.requires_goggles");
 	public static final ResourceLocation GOGGLES_DETAILED = new ResourceLocation(ID, "goggles.detailed");
@@ -57,7 +57,7 @@ public class CreatePlugin implements IWailaPlugin {
 	@Override
 	public void register(IWailaCommonRegistration registration) {
 		registration.registerBlockDataProvider(BlazeBurnerProvider.INSTANCE, BacktankBlockEntity.class);
-		registration.registerBlockDataProvider(CopperBacktankProvider.INSTANCE, BacktankBlockEntity.class);
+		registration.registerBlockDataProvider(BacktankProvider.INSTANCE, BacktankBlockEntity.class);
 		registration.registerItemStorage(ContraptionItemStorageProvider.INSTANCE, AbstractContraptionEntity.class);
 		registration.registerFluidStorage(ContraptionFluidStorageProvider.INSTANCE, AbstractContraptionEntity.class);
 		registration.registerFluidStorage(HideBoilerHandlerProvider.INSTANCE, FluidTankBlockEntity.class);
@@ -78,7 +78,7 @@ public class CreatePlugin implements IWailaPlugin {
 		registration.registerEntityIcon(ContraptionExactBlockProvider.INSTANCE, AbstractContraptionEntity.class);
 		registration.registerEntityComponent(ContraptionExactBlockProvider.INSTANCE, AbstractContraptionEntity.class);
 		registration.registerBlockComponent(FilterProvider.INSTANCE, Block.class);
-		registration.registerBlockComponent(CopperBacktankProvider.INSTANCE, BacktankBlock.class);
+		registration.registerBlockComponent(BacktankProvider.INSTANCE, BacktankBlock.class);
 		registration.registerBlockComponent(new GogglesProvider(), Block.class);
 
 		registration.registerItemStorageClient(ContraptionItemStorageProvider.INSTANCE);
