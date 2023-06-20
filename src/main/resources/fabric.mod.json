@@ -27,7 +27,7 @@
     "minecraft": "1.18.2"
   },
   "breaks": {
-    "create": ">=0.5.1"
+    "create": "<0.5.1-"
   },
 
   "custom": {

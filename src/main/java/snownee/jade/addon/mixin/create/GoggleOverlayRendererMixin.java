@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.simibubi.create.content.contraptions.goggles.GoggleOverlayRenderer;
+import com.simibubi.create.content.equipment.goggles.GoggleOverlayRenderer;
 
 import snownee.jade.addon.create.CreatePlugin;
 import snownee.jade.api.config.IWailaConfig;
