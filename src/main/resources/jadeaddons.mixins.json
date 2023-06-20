@@ -3,11 +3,12 @@
   "package": "snownee.jade.addon.mixin",
   "compatibilityLevel": "JAVA_16",
   "refmap": "jadeaddons.refmap.json",
-  "client": [
-    "create.GoggleOverlayRendererMixin"
-  ],
   "injectors": {
     "defaultRequire": 1
   },
-  "minVersion": "0.8"
+  "minVersion": "0.8",
+  "client": [
+    "create.GoggleOverlayRendererMixin",
+    "create.PonderTooltipHandlerMixin"
+  ]
 }

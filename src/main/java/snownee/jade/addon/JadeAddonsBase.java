@@ -11,7 +11,6 @@ import net.fabricmc.loader.api.FabricLoader;
 import snownee.jade.addon.create.CreatePlugin;
 import snownee.jade.addon.lootr.LootrPlugin;
 import snownee.jade.addon.mi.MIPlugin;
-import snownee.jade.addon.secret_rooms.SecretRoomsPlugin;
 import snownee.jade.addon.team_reborn_energy.TeamRebornEnergyPlugin;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
@@ -27,7 +26,6 @@ public class JadeAddonsBase implements IWailaPlugin {
 		PLUGIN_LOADERS.put("create", () -> CreatePlugin::new);
 		PLUGIN_LOADERS.put("lootr", () -> LootrPlugin::new);
 		PLUGIN_LOADERS.put("mi", () -> MIPlugin::new);
-		PLUGIN_LOADERS.put("secretrooms", () -> SecretRoomsPlugin::new);
 		PLUGIN_LOADERS.put("team_reborn_energy", () -> TeamRebornEnergyPlugin::new);
 	}
 

@@ -97,9 +97,9 @@ dependencies {
     //modImplementation "curse.maven:techreborn-233564:3958646"
     //modImplementation "curse.maven:reborncore-237903:3958647"
 
-    modImplementation "maven.modrinth:secret-rooms:1.3.2"
-    modImplementation "curse.maven:arrp-463113:3901211"
-    modImplementation "maven.modrinth:modern-industrialization:1.4.1"
+    //modImplementation "maven.modrinth:secret-rooms:1.3.2"
+    //modImplementation "curse.maven:arrp-463113:3901211"
+    modImplementation "maven.modrinth:modern-industrialization:1.6.9"
     modImplementation("com.github.Technici4n:magna:${project.magna_version}") {
         exclude(group: "io.github.prospector")
         exclude(group: "me.shedaniel.cloth")
@@ -114,7 +114,8 @@ dependencies {
     
     // create setup
     modLocalRuntime("maven.modrinth:lazydfu:0.1.3") // lazydfu - improves start times
-    modImplementation("com.simibubi.create:create-fabric-${project.minecraft_version}:${project.create_version}") { transitive = false }
+    modImplementation("com.simibubi.create:create-fabric-${project.minecraft_version}:${project.create_version}")// { transitive = false }
+    /*
     modImplementation("io.github.fabricators_of_create.Porting-Lib:porting-lib:${project.port_lib_version}+${project.minecraft_version}")
     //modImplementation("me.alphamode:ForgeTags:${project.forge_tags_version}")
     modImplementation("com.electronwill.night-config:core:${project.night_config_core_version}")
@@ -126,7 +127,8 @@ dependencies {
     modImplementation("dev.cafeteria:fake-player-api:${project.fake_player_api_version}")
     modImplementation("io.github.tropheusj:milk-lib:${project.milk_lib_version}")
     implementation("com.google.code.findbugs:jsr305:${project.jsr305_version}")
-
+    */
+    
     modApi("teamreborn:energy:${project.tr_energy_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }

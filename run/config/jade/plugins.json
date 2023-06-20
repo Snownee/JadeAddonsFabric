@@ -57,9 +57,9 @@
   },
   "create": {
     "filter": true,
+    "backtank_capacity": true,
     "goggles.requires_goggles": true,
-    "goggles": false,
-    "copper_backtank": true,
+    "goggles": true,
     "blaze_burner": true,
     "exact_block": true,
     "crafting_blueprint": true,
@@ -68,8 +68,5 @@
   },
   "lootr": {
     "info": true
-  },
-  "secretrooms": {
-    "jadeaddons": true
   }
 }
