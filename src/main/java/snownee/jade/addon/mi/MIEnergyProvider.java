@@ -5,12 +5,11 @@ import java.util.Objects;
 
 import com.google.common.math.LongMath;
 
-import aztech.modern_industrialization.api.energy.EnergyApi;
-import aztech.modern_industrialization.compat.megane.holder.CrafterComponentHolder;
-import aztech.modern_industrialization.compat.megane.holder.EnergyComponentHolder;
-import aztech.modern_industrialization.compat.megane.holder.EnergyListComponentHolder;
-import aztech.modern_industrialization.machines.components.CrafterComponent;
-import aztech.modern_industrialization.machines.components.EnergyComponent;
+import aztech.modern_industrialization.api.machine.component.CrafterAccess;
+import aztech.modern_industrialization.api.machine.component.EnergyAccess;
+import aztech.modern_industrialization.api.machine.holder.CrafterComponentHolder;
+import aztech.modern_industrialization.api.machine.holder.EnergyComponentHolder;
+import aztech.modern_industrialization.api.machine.holder.EnergyListComponentHolder;
 import aztech.modern_industrialization.pipes.electricity.ElectricityNetworkNode;
 import aztech.modern_industrialization.pipes.impl.PipeBlockEntity;
 import aztech.modern_industrialization.pipes.impl.PipeVoxelShape;
@@ -20,6 +19,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import snownee.jade.api.Accessor;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.ui.IDisplayHelper;
@@ -28,10 +28,9 @@ import snownee.jade.api.view.EnergyView;
 import snownee.jade.api.view.IClientExtensionProvider;
 import snownee.jade.api.view.IServerExtensionProvider;
 import snownee.jade.api.view.ViewGroup;
-import snownee.jade.util.PlatformProxy;
 
 public enum MIEnergyProvider
-		implements IServerExtensionProvider<Object, CompoundTag>, IClientExtensionProvider<CompoundTag, EnergyView> {
+		implements IServerExtensionProvider<BlockEntity, CompoundTag>, IClientExtensionProvider<CompoundTag, EnergyView> {
 	INSTANCE;
 
 	@Override
@@ -65,10 +64,10 @@ public enum MIEnergyProvider
 	}
 
 	@Override
-	public List<ViewGroup<CompoundTag>> getGroups(ServerPlayer player, ServerLevel level, Object target, boolean showDetails) {
+	public List<ViewGroup<CompoundTag>> getGroups(ServerPlayer player, ServerLevel level, BlockEntity target, boolean showDetails) {
 		var groups = getGroups(target);
 		if (groups != null && target instanceof CrafterComponentHolder) {
-			CrafterComponent component = ((CrafterComponentHolder) target).getCrafterComponent();
+			CrafterAccess component = ((CrafterComponentHolder) target).getCrafterComponent();
 			if (component.hasActiveRecipe()) {
 				CompoundTag tag = groups.get(0).views.get(0);
 				tag.putLong("RecipeEu", component.getCurrentRecipeEu());
@@ -77,10 +76,10 @@ public enum MIEnergyProvider
 		return groups;
 	}
 
-	private List<ViewGroup<CompoundTag>> getGroups(Object target) {
+	private List<ViewGroup<CompoundTag>> getGroups(BlockEntity target) {
 		if (target instanceof EnergyListComponentHolder) {
 			long amount = 0, capacity = 0;
-			for (EnergyComponent component : ((EnergyListComponentHolder) target).getEnergyComponents()) {
+			for (EnergyAccess component : ((EnergyListComponentHolder) target).getEnergyComponents()) {
 				amount = LongMath.saturatedAdd(amount, component.getEu());
 				capacity = LongMath.saturatedAdd(capacity, component.getCapacity());
 			}
@@ -89,19 +88,15 @@ public enum MIEnergyProvider
 			}
 		}
 		if (target instanceof EnergyComponentHolder) {
-			EnergyComponent component = ((EnergyComponentHolder) target).getEnergyComponent();
+			EnergyAccess component = ((EnergyComponentHolder) target).getEnergyComponent();
 			if (component != null && component.getCapacity() > 0) {
 				return List.of(new ViewGroup<>(List.of(EnergyView.of(component.getEu(), component.getCapacity()))));
 			}
 		}
-		var storage = PlatformProxy.lookupBlock(EnergyApi.SIDED, target);
-		if (storage != null) {
-			return List.of(new ViewGroup<>(List.of(EnergyView.of(storage.getAmount(), storage.getCapacity()))));
-		}
 		if (target instanceof PipeBlockEntity cable) {
 			if (cable.getNodes().stream().anyMatch($ -> $ instanceof ElectricityNetworkNode)) {
 				// add a placeholder energy view
-				return List.of(new ViewGroup<>(List.of(EnergyView.of(1, 1))));
+				return List.of(new ViewGroup<>(List.of(EnergyView.of(0, 0))));
 			}
 		}
 		return null;

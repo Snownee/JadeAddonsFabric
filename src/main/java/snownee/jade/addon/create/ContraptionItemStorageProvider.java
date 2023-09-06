@@ -15,6 +15,7 @@ import snownee.jade.api.view.IClientExtensionProvider;
 import snownee.jade.api.view.IServerExtensionProvider;
 import snownee.jade.api.view.ItemView;
 import snownee.jade.api.view.ViewGroup;
+import snownee.jade.util.JadeFabricUtils;
 
 public enum ContraptionItemStorageProvider implements IServerExtensionProvider<AbstractContraptionEntity, ItemStack>,
 		IClientExtensionProvider<ItemStack, ItemView> {
@@ -33,7 +34,7 @@ public enum ContraptionItemStorageProvider implements IServerExtensionProvider<A
 	@Override
 	public List<ViewGroup<ItemStack>> getGroups(ServerPlayer player, ServerLevel level, AbstractContraptionEntity entity, boolean showDetails) {
 		Contraption contraption = ((AbstractContraptionEntity) entity).getContraption();
-		return List.of(ItemView.fromStorage(contraption.getSharedInventory(), 54, 0));
+		return List.of(JadeFabricUtils.fromItemStorage(contraption.getSharedInventory(), 54, 0));
 	}
 
 }

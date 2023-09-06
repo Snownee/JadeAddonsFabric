@@ -1,7 +1,7 @@
 plugins {
     id 'fabric-loom' version '1.0-SNAPSHOT'
     id 'maven-publish'
-	id "com.modrinth.minotaur" version "2.+"
+    id "com.modrinth.minotaur" version "2.+"
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -14,6 +14,8 @@ group = project.maven_group
 repositories {
     maven { url "https://maven.shedaniel.me/" }
     maven { url "https://maven.terraformersmc.com/releases/" }
+    // trinkets
+    maven { url "https://maven.terraformersmc.com/" }
     maven {
         url "https://cursemaven.com"
         content {
@@ -27,25 +29,10 @@ repositories {
     maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
     maven { url = "https://jitpack.io/" } // Mixin Extras, fabric ASM
     maven { url = "https://dvs1.progwml6.com/files/maven/" } // JEI
-    // flatDir { dir 'libs' }
-    maven {
-        name 'Jitpack for MI'
-        url 'https://jitpack.io'
-        content {
-            includeGroup "com.github.KubeJS-Mods"
-            includeGroup "com.github.GabrielOlvH"
-            /* For Magna */
-            includeGroup "com.github.Technici4n"
-            includeGroup "com.github.Draylar.omega-config"
-        }
-    }
+    flatDir { dir 'libs' }
     maven {
         name = 'Ladysnake Mods'
-        url = 'https://ladysnake.jfrog.io/artifactory/mods'
-        content {
-            includeGroup 'io.github.ladysnake'
-            includeGroupByRegex 'io\\.github\\.onyxstudios.*'
-        }
+        url = 'https://maven.ladysnake.org/releases'
     }
     // for Patchouli
     maven {
@@ -54,6 +41,12 @@ repositories {
     // for WTHIT
     maven {
         url 'https://maven.bai.lol'
+    }
+    maven {
+        url = "https://maven.draylar.dev/releases"
+        content {
+            includeGroup "dev.draylar"
+        }
     }
     // Add repositories to retrieve artifacts from in here.
     // You should only use this when depending on other mods because
@@ -78,29 +71,29 @@ dependencies {
 
     // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
     // You may need to force-disable transitiveness on them.
-    
+
     modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
     modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-    
+
     modImplementation "dev.architectury:architectury-fabric:${project.architectury_version}"
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
-    
-    modImplementation "curse.maven:jade-324717:4328558"
-    //modImplementation "libs:Jade-1.19.1:fabric-8.6.0"
+
+    //modImplementation "curse.maven:jade-324717:4710614"
+    modImplementation "libs:Jade-1.20:fabric-11.5.1"
     //modImplementation "curse.maven:create-fabric-624165:3913786"
-    modImplementation "curse.maven:lootr-fabric-615106:3899940"
-    modImplementation "curse.maven:kiwi-549404:4036309"
+    modImplementation "curse.maven:lootr-fabric-615106:4608507"
+    modImplementation "curse.maven:kiwi-549404:4688477"
     //annotationProcessor "curse.maven:kiwi-549404:3680804"
     //modImplementation "curse.maven:techreborn-233564:3958646"
     //modImplementation "curse.maven:reborncore-237903:3958647"
 
     //modImplementation "maven.modrinth:secret-rooms:1.3.2"
     //modImplementation "curse.maven:arrp-463113:3901211"
-    modImplementation "maven.modrinth:modern-industrialization:1.6.9"
-    modImplementation("com.github.Technici4n:magna:${project.magna_version}") {
+    modImplementation "maven.modrinth:modern-industrialization:1.7.3"
+    modImplementation("dev.draylar:magna:${project.magna_version}") {
         exclude(group: "io.github.prospector")
         exclude(group: "me.shedaniel.cloth")
         exclude(group: "net.fabricmc.fabric-api")
@@ -111,10 +104,10 @@ dependencies {
     modImplementation("vazkii.patchouli:Patchouli:${project.patchouli_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-    
+
     // create setup
-    modLocalRuntime("maven.modrinth:lazydfu:0.1.3") // lazydfu - improves start times
-    modImplementation("com.simibubi.create:create-fabric-${project.minecraft_version}:${project.create_version}")// { transitive = false }
+    modImplementation("com.simibubi.create:create-fabric-${project.minecraft_version}:${project.create_version}")
+// { transitive = false }
     /*
     modImplementation("io.github.fabricators_of_create.Porting-Lib:porting-lib:${project.port_lib_version}+${project.minecraft_version}")
     //modImplementation("me.alphamode:ForgeTags:${project.forge_tags_version}")
@@ -128,32 +121,18 @@ dependencies {
     modImplementation("io.github.tropheusj:milk-lib:${project.milk_lib_version}")
     implementation("com.google.code.findbugs:jsr305:${project.jsr305_version}")
     */
-    
+
     modApi("teamreborn:energy:${project.tr_energy_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-    
-    modImplementation("mcp.mobius.waila:wthit:fabric-${project.wthit_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-    modRuntimeOnly("lol.bai.megane:megane-api:${project.megane_api_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-    modRuntimeOnly("lol.bai.megane:megane-runtime:${project.megane_runtime_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-        exclude(group: "mcp.mobius.waila")
-    }
-    modRuntimeOnly("lol.bai.megane:megane-vanilla:${project.megane_vanilla_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-        exclude(group: "mcp.mobius.waila")
-    }
+    modImplementation "dev.emi:trinkets:${trinkets_version}"
 }
 
 loom {
     mixin {
         defaultRefmapName = "${project.mod_id}.refmap.json"
     }
-    
+
     //accessWidenerPath = file("src/main/resources/${project.mod_id}.accesswidener")
 }
 
@@ -187,7 +166,7 @@ jar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     exclude '**/*.bat'
     from("LICENSE") {
-        rename { "${it}_${project.archivesBaseName}"}
+        rename { "${it}_${project.archivesBaseName}" }
     }
 }
 
@@ -215,13 +194,15 @@ publishing {
 }
 
 modrinth {
-    token = System.getenv("MODRINTH_TOKEN") // This is the default. Remember to have the MODRINTH_TOKEN environment variable set or else this will fail, or set it to whatever you want - just make sure it stays private!
+    token = System.getenv("MODRINTH_TOKEN")
+    // This is the default. Remember to have the MODRINTH_TOKEN environment variable set or else this will fail, or set it to whatever you want - just make sure it stays private!
     projectId = "fThnVRli" // This can be the project ID or the slug. Either will work!
-    versionNumber = project.mod_version // You don't need to set this manually. Will fail if Modrinth has this version already
+    versionNumber = project.mod_version
+    // You don't need to set this manually. Will fail if Modrinth has this version already
     versionType = "release" // This is the default -- can also be `beta` or `alpha`
     uploadFile = remapJar // With Loom, this MUST be set to `remapJar` instead of `jar`!
-    gameVersions = ["1.19.2"] // Must be an array, even with only one version
-    loaders = ["fabric"] // Must also be an array - no need to specify this if you're using Loom or ForgeGradle
+    gameVersions = ["1.20", "1.20.1"] // Must be an array, even with only one version
+    loaders = ["fabric", "quilt"] // Must also be an array - no need to specify this if you're using Loom or ForgeGradle
     dependencies { // A special DSL for creating dependencies
         // scope.type
         // The scope can be `required`, `optional`, `incompatible`, or `embedded`

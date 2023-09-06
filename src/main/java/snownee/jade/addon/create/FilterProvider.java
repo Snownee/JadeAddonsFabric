@@ -9,7 +9,7 @@ import com.simibubi.create.foundation.utility.Components;
 import com.simibubi.create.foundation.utility.Lang;
 
 import io.github.fabricators_of_create.porting_lib.transfer.item.ItemStackHandler;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
@@ -45,7 +45,7 @@ public enum FilterProvider implements IBlockComponentProvider {
 		}
 		ItemStack filter = behaviour.getFilter(accessor.getSide());
 		if (filter != null && filter.getItem() instanceof FilterItem item) {
-			String key = Registry.ITEM.getKey(item).toString();
+			String key = BuiltInRegistries.ITEM.getKey(item).toString();
 			IElementHelper elements = IElementHelper.get();
 			ITooltip tooltip2 = elements.tooltip();
 			if ("create:filter".equals(key)) {
@@ -57,7 +57,7 @@ public enum FilterProvider implements IBlockComponentProvider {
 				tooltip2.add(new ScaledTextElement(component, 0.5F));
 				ItemStackHandler filterItems = FilterItem.getFilterItems(filter);
 				int count = 0;
-				for (int i = 0; i < filterItems.getSlots(); i++) {
+				for (int i = 0; i < filterItems.getSlotCount(); i++) {
 					ItemStack filterStack = filterItems.getStackInSlot(i);
 					if (filterStack.isEmpty())
 						continue;

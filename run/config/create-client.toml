@@ -26,8 +26,8 @@
 	#.
 	#The fluid unit that will be displayed when viewing fluids
 	#Example: 1000 mB or 81000 Droplets
-	#Allowed Values: DROPLETS, MILIBUCKETS
-	fluidUnitType = "MILIBUCKETS"
+	#Allowed Values: DROPLETS, MILLIBUCKETS
+	fluidUnitType = "MILLIBUCKETS"
 	#.
 	#[in Blocks]
 	#Maximum Distance to the player at which items in Blocks' filter slots will be displayed

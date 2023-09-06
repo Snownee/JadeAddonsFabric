@@ -37,6 +37,7 @@ import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
 import snownee.jade.api.WailaPlugin;
+import snownee.jade.api.config.IWailaConfig;
 import snownee.jade.overlay.RayTracing;
 
 @WailaPlugin(CreatePlugin.ID)
@@ -94,7 +95,7 @@ public class CreatePlugin implements IWailaPlugin {
 			Entity camera = mc.getCameraEntity();
 			Vec3 origin = camera.getEyePosition(mc.getFrameTime());
 			Vec3 lookVector = camera.getViewVector(mc.getFrameTime());
-			float reach = mc.gameMode.getPickRange() + client.getConfig().getGeneral().getReachDistance();
+			float reach = mc.gameMode.getPickRange() + IWailaConfig.get().getGeneral().getReachDistance();
 			Vec3 target = origin.add(lookVector.x * reach, lookVector.y * reach, lookVector.z * reach);
 			AbstractContraptionEntity contraptionEntity = (AbstractContraptionEntity) e;
 			Vec3 localOrigin = contraptionEntity.toLocalVector(origin, 1);
@@ -104,7 +105,7 @@ public class CreatePlugin implements IWailaPlugin {
 				StructureBlockInfo blockInfo = contraption.getBlocks().get(p);
 				if (blockInfo == null)
 					return false;
-				BlockState state = blockInfo.state;
+				BlockState state = blockInfo.state();
 				VoxelShape raytraceShape = state.getShape(Minecraft.getInstance().level, BlockPos.ZERO);
 				if (raytraceShape.isEmpty())
 					return false;

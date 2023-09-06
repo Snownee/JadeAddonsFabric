@@ -1,4 +1,3 @@
-blacklistedOres = []
 enableNoEmiMessage = true
 spawnWithGuideBook = true
 respawnWithGuideBook = true
@@ -11,7 +10,7 @@ colorWaterLava = true
 enableDebugCommands = false
 enableBidirectionalEnergyCompat = false
 enableAe2Integration = true
-generateOres = true
+enableDefaultOreGenTooltips = true
 datagenOnStartup = false
 loadRuntimeGeneratedResources = true
 removeIndustrialistTrades = false
