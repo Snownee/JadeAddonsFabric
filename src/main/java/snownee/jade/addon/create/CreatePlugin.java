@@ -32,12 +32,15 @@ import net.minecraft.world.phys.HitResult.Type;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import snownee.jade.api.Accessor;
+import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.EntityAccessor;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
 import snownee.jade.api.WailaPlugin;
+import snownee.jade.api.callback.JadeRayTraceCallback;
 import snownee.jade.api.config.IWailaConfig;
+import snownee.jade.impl.WailaClientRegistration;
 import snownee.jade.overlay.RayTracing;
 
 @WailaPlugin(CreatePlugin.ID)
@@ -88,16 +91,18 @@ public class CreatePlugin implements IWailaPlugin {
 		registration.registerFluidStorageClient(HideBoilerHandlerProvider.INSTANCE);
 
 		RayTracing.ENTITY_FILTER = RayTracing.ENTITY_FILTER.and(e -> {
-			if (!(e instanceof AbstractContraptionEntity)) {
+			if (!(e instanceof AbstractContraptionEntity contraptionEntity)) {
 				return true;
 			}
 			Minecraft mc = Minecraft.getInstance();
 			Entity camera = mc.getCameraEntity();
+			if (camera == null) {
+				return true;
+			}
 			Vec3 origin = camera.getEyePosition(mc.getFrameTime());
 			Vec3 lookVector = camera.getViewVector(mc.getFrameTime());
 			float reach = mc.gameMode.getPickRange() + IWailaConfig.get().getGeneral().getReachDistance();
 			Vec3 target = origin.add(lookVector.x * reach, lookVector.y * reach, lookVector.z * reach);
-			AbstractContraptionEntity contraptionEntity = (AbstractContraptionEntity) e;
 			Vec3 localOrigin = contraptionEntity.toLocalVector(origin, 1);
 			Vec3 localTarget = contraptionEntity.toLocalVector(target, 1);
 			Contraption contraption = contraptionEntity.getContraption();
@@ -110,8 +115,15 @@ public class CreatePlugin implements IWailaPlugin {
 				if (raytraceShape.isEmpty())
 					return false;
 				BlockHitResult rayTrace = raytraceShape.clip(localOrigin, localTarget, p);
-				if (rayTrace != null && rayTrace.getType() != Type.MISS) {
-					ContraptionExactBlockProvider.INSTANCE.setHit(rayTrace, state);
+				if (IWailaConfig.get().getPlugin().get(CONTRAPTION_EXACT_BLOCK) && rayTrace != null && rayTrace.getType() != Type.MISS) {
+					BlockAccessor originalAccessor = client.blockAccessor().blockState(state).hit(rayTrace).build();
+					Accessor<?> accessor = originalAccessor;
+					for (JadeRayTraceCallback callback : WailaClientRegistration.INSTANCE.rayTraceCallback.callbacks()) {
+						accessor = callback.onRayTrace(rayTrace, accessor, originalAccessor);
+					}
+					if (accessor != null) {
+						ContraptionExactBlockProvider.INSTANCE.setHit(contraptionEntity, accessor);
+					}
 				}
 				return rayTrace != null;
 			});
