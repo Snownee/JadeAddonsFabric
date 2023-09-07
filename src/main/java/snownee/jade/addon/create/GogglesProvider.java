@@ -2,6 +2,7 @@ package snownee.jade.addon.create;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.simibubi.create.content.contraptions.IDisplayAssemblyExceptions;
 import com.simibubi.create.content.contraptions.piston.MechanicalPistonBlock;
@@ -24,6 +25,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.LiteralContents;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -43,6 +45,7 @@ public class GogglesProvider implements IBlockComponentProvider {
 		return BuiltInRegistries.BLOCK.get(new ResourceLocation(CreatePlugin.ID, id));
 	}
 
+	private static final Set<String> REMOVE_KEYS = Set.of("create.tooltip.chute.contains", "create.tooltip.deployer.contains");
 	private final Block PISTON_EXTENSION_POLE = block("piston_extension_pole");
 
 	@Override
@@ -106,6 +109,14 @@ public class GogglesProvider implements IBlockComponentProvider {
 			return;
 		}
 
+		tooltip.removeIf(c -> {
+			for (Component sibling : c.getSiblings()) {
+				if (sibling.getContents() instanceof TranslatableContents contents && REMOVE_KEYS.contains(contents.getKey())) {
+					return true;
+				}
+			}
+			return false;
+		});
 		tooltip.replaceAll(c -> {
 			if (c.getContents() instanceof LiteralContents literal && literal.text().startsWith("    ")) {
 				MutableComponent mutableComponent = Component.literal(literal.text().substring(4)).withStyle(c.getStyle());
