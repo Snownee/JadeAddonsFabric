@@ -17,7 +17,8 @@
 
   "entrypoints": {
     "jade": [
-      "snownee.jade.addon.JadeAddonsBase"
+      "snownee.jade.addon.JadeAddonsBase",
+      "snownee.jade.addon.general.GeneralPlugin"
     ],
     "modmenu": [
       "snownee.jade.addon.ModMenuCompat"
