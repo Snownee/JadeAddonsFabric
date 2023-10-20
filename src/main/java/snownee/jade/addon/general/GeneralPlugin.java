@@ -8,11 +8,9 @@ import java.util.function.Consumer;
 import org.jetbrains.annotations.Nullable;
 
 import dev.emi.trinkets.api.TrinketsApi;
-import io.github.fabricators_of_create.porting_lib.event.common.TagsUpdatedCallback;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -60,13 +58,6 @@ public class GeneralPlugin implements IWailaPlugin {
 			);
 			/* on */
 		}
-
-		TagsUpdatedCallback.EVENT.register(this::tagsUpdated);
-	}
-
-	private void refreshTags() {
-		refreshTag(EQUIPMENT_REQUIREMENT, $ -> requirementTag = $);
-		//		refreshTag(DETAILS_EQUIPMENT_REQUIREMENT, $ -> requirementDetailsTag = $);
 	}
 
 	private void refreshTag(ResourceLocation id, Consumer<TagKey<Item>> setter) {
@@ -76,10 +67,6 @@ public class GeneralPlugin implements IWailaPlugin {
 		} else {
 			setter.accept(TagKey.create(Registries.ITEM, new ResourceLocation(s)));
 		}
-	}
-
-	private void tagsUpdated(RegistryAccess registryAccess) {
-		refreshTags();
 	}
 
 	@Environment(EnvType.CLIENT)
