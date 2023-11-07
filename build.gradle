@@ -81,7 +81,7 @@ dependencies {
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 
-    modImplementation "curse.maven:jade-324717:4768565"
+    modImplementation "curse.maven:jade-324717:4792447"
     //modImplementation "libs:Jade-1.20:fabric-11.5.1"
     //modImplementation "curse.maven:create-fabric-624165:3913786"
     modImplementation "curse.maven:lootr-fabric-615106:4608507"
