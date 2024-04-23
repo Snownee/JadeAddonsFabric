@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "jadeaddons_lootr0730",
+  "version": "${version}",
+  "name": "Jade Addons Lootr 0730",
+  "description": "Jade's additional mod supports for Lootr 0730.",
+  "authors": [
+    "Snownee"
+  ],
+  "license": "ARR",
+  "icon": "icon.png",
+  "mixins": [
+    "jadeaddons.lootr.0730.mixins.json"
+  ],
+  "depends": {
+    "jade": ">=11.6",
+    "minecraft": ">=1.20"
+  },
+  "breaks": {
+    "create": "<0.5.1-"
+  },
+  "custom": {
+    "modmenu": {
+      "parent": "jadeaddons"
+    }
+  }
+}

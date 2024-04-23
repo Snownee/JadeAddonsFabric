@@ -20,9 +20,9 @@ build
 
 # other
 eclipse
-run/*
+**/run/*
 /logs
 /.factorypath
 
-!run/config
-!run/config/fabric_loader_dependencies.json
+!**/run/config
+!**/run/config/fabric_loader_dependencies.json

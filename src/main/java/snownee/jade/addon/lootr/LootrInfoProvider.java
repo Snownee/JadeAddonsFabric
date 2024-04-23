@@ -5,8 +5,6 @@ import java.util.UUID;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.zestyblaze.lootr.api.blockentity.ILootBlockEntity;
-import net.zestyblaze.lootr.data.DataStorage;
 import snownee.jade.api.Accessor;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
@@ -25,9 +23,7 @@ public enum LootrInfoProvider implements IBlockComponentProvider, IServerDataPro
 
 	@Override
 	public void appendServerData(CompoundTag data, BlockAccessor accessor) {
-		if (accessor.getBlockEntity() instanceof ILootBlockEntity tile) {
-			appendServerData(data, tile.getTileId());
-		}
+		throw new IllegalStateException();
 	}
 
 	public static void appendTooltip(ITooltip tooltip, Accessor<?> accessor) {
@@ -48,20 +44,7 @@ public enum LootrInfoProvider implements IBlockComponentProvider, IServerDataPro
 	}
 
 	public static void appendServerData(CompoundTag data, UUID id) {
-		if (!DataStorage.isDecayed(id)) {
-			int decayValue = DataStorage.getDecayValue(id);
-			if (decayValue > 0) {
-				data.putInt("LootrDecay", decayValue);
-			}
-		}
-		if (DataStorage.isRefreshed(id)) {
-			data.putBoolean("LootrRefreshed", true);
-		} else {
-			int refreshValue = DataStorage.getRefreshValue(id);
-			if (refreshValue > 0) {
-				data.putInt("LootrRefresh", refreshValue);
-			}
-		}
+		throw new IllegalStateException();
 	}
 
 	@Override

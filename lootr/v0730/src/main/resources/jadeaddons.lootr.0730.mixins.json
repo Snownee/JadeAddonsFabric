@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "snownee.jade.addon.mixin",
+  "package": "snownee.jade.addon.mixin.lootr.v0730",
   "compatibilityLevel": "JAVA_16",
   "refmap": "jadeaddons.refmap.json",
   "plugin": "snownee.jade.addon.mixin.JadeAddonsMixinPlugin",
@@ -9,12 +9,10 @@
   },
   "minVersion": "0.8",
   "client": [
-    "create.GoggleOverlayRendererMixin",
-    "create.PonderTooltipHandlerMixin"
   ],
   "mixins": [
-    "lootr.v0731.LootrInfoProviderMixin",
-    "lootr.v0731.LootrInventoryProviderMixin",
-    "lootr.v0731.LootrPluginMixin"
+    "LootrInfoProviderMixin",
+    "LootrInventoryProviderMixin",
+    "LootrPluginMixin"
   ]
 }
