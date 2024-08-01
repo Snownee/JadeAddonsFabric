@@ -55,7 +55,8 @@ public enum MIEnergyProvider
 				return new ClientViewGroup<>($.views.stream().map(tag -> {
 					var view = EnergyView.read(tag, "EU");
 					if (view != null && tag.contains("RecipeEu")) {
-						view.overrideText = Component.literal(view.current).withStyle(ChatFormatting.WHITE).append(" (%s/t)".formatted(IDisplayHelper.get().humanReadableNumber(tag.getLong("RecipeEu"), "EU", false)));
+						view.overrideText = Component.literal(view.current).withStyle(ChatFormatting.WHITE).append(" (%s/t)".formatted(
+								IDisplayHelper.get().humanReadableNumber(tag.getLong("RecipeEu"), "EU", false)));
 					}
 					return view;
 				}).filter(Objects::nonNull).toList());

@@ -1,7 +1,7 @@
 {
-  "type": "remove_elements",
-  "target": {
-    "block": "supplementaries:doormat"
-  },
-  "tag": "minecraft:item_storage"
+	"type": "remove_elements",
+	"target": {
+		"block": "supplementaries:doormat"
+	},
+	"tag": "minecraft:item_storage"
 }

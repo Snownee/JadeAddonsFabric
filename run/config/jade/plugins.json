@@ -4,7 +4,6 @@
     "furnace": true,
     "harvest_tool.show_unbreakable": true,
     "animal_owner": true,
-    "animal_owner.fetch_names": true,
     "harvest_tool.effective_tool": true,
     "item_storage.normal_amount": 9,
     "item_storage": true,
@@ -37,6 +36,7 @@
     "block_states": false,
     "lectern": true,
     "entity_armor": true,
+    "harvest_tool.creative": false,
     "horse_stats": true,
     "item_tooltip": true,
     "entity_health": true,
@@ -49,6 +49,9 @@
     "potion_effects": true,
     "painting": true,
     "chiseled_bookshelf": true
+  },
+  "jadeaddons": {
+    "equipment_requirement": ""
   },
   "jade": {
     "coordinates.rel": false,

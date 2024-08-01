@@ -1,9 +1,9 @@
 {
-  "type": "replace",
-  "target": {
-    "block": "supplementaries:trapped_green_present"
-  },
-  "with": {
-    "block": "supplementaries:green_present"
-  }
+	"type": "replace",
+	"target": {
+		"block": "supplementaries:trapped_green_present"
+	},
+	"with": {
+		"block": "supplementaries:green_present"
+	}
 }

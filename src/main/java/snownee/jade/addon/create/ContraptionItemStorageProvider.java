@@ -37,12 +37,20 @@ public enum ContraptionItemStorageProvider implements IServerExtensionProvider<A
 	}
 
 	@Override
-	public List<ViewGroup<ItemStack>> getGroups(ServerPlayer player, ServerLevel level, AbstractContraptionEntity entity, boolean showDetails) {
+	public List<ViewGroup<ItemStack>> getGroups(
+			ServerPlayer player,
+			ServerLevel level,
+			AbstractContraptionEntity entity,
+			boolean showDetails) {
 		//TODO: simplify it in 1.20.2+
 		Contraption contraption = ((AbstractContraptionEntity) entity).getContraption();
 		Storage<ItemVariant> storage = contraption.getSharedInventory();
 		try {
-			return ItemStorageProvider.INSTANCE.containerCache.get(storage, () -> new ItemCollector<>(JadeFabricUtils.fromItemStorage(storage, 0, target -> (Storage<ItemVariant>) target))).update(storage, level.getGameTime());
+			return ItemStorageProvider.INSTANCE.containerCache.get(
+					storage,
+					() -> new ItemCollector<>(JadeFabricUtils.fromItemStorage(storage, 0, target -> (Storage<ItemVariant>) target))).update(
+					storage,
+					level.getGameTime());
 		} catch (ExecutionException e) {
 			return null;
 		}

@@ -29,7 +29,9 @@ import snownee.jade.impl.ui.TextElement;
 public enum ContraptionExactBlockProvider implements IEntityComponentProvider {
 	INSTANCE;
 
-	private final Cache<Entity, Accessor<?>> accessorCache = CacheBuilder.newBuilder().weakKeys().expireAfterAccess(100, TimeUnit.MILLISECONDS).build();
+	private final Cache<Entity, Accessor<?>> accessorCache = CacheBuilder.newBuilder().weakKeys().expireAfterAccess(
+			100,
+			TimeUnit.MILLISECONDS).build();
 
 	@Override
 	public @Nullable IElement getIcon(EntityAccessor accessor, IPluginConfig config, IElement currentIcon) {

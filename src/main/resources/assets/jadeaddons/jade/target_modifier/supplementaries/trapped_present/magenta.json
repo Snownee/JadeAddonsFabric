@@ -1,9 +1,9 @@
 {
-  "type": "replace",
-  "target": {
-    "block": "supplementaries:trapped_magenta_present"
-  },
-  "with": {
-    "block": "supplementaries:magenta_present"
-  }
+	"type": "replace",
+	"target": {
+		"block": "supplementaries:trapped_magenta_present"
+	},
+	"with": {
+		"block": "supplementaries:magenta_present"
+	}
 }

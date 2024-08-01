@@ -1,9 +1,9 @@
 {
-  "type": "replace",
-  "target": {
-    "entity": "artifacts:mimic"
-  },
-  "with": {
-    "block": "minecraft:chest"
-  }
+	"type": "replace",
+	"target": {
+		"entity": "artifacts:mimic"
+	},
+	"with": {
+		"block": "minecraft:chest"
+	}
 }

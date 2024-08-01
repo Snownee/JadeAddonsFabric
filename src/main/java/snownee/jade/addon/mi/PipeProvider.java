@@ -55,7 +55,9 @@ public enum PipeProvider implements IServerDataProvider<BlockAccessor>,
 
 			if (node instanceof FluidNetworkNode fluidNode) {
 				var info = fluidNode.collectNetworkInfo();
-				pipeData = FluidView.writeDefault(JadeFluidObject.of(info.fluid().getFluid(), Math.max(info.transfer(), info.stored())), info.capacity());
+				pipeData = FluidView.writeDefault(
+						JadeFluidObject.of(info.fluid().getFluid(), Math.max(info.transfer(), info.stored())),
+						info.capacity());
 			}
 
 			if (node instanceof ElectricityNetworkNode electricityNode) {

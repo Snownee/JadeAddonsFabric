@@ -46,7 +46,8 @@ public class GeneralPlugin implements IWailaPlugin {
 		//		registration.addConfig(DETAILS_EQUIPMENT_REQUIREMENT, "", ResourceLocation::isValidResourceLocation);
 		registration.addConfigListener(EQUIPMENT_REQUIREMENT, id -> refreshTag(id, $ -> requirementTag = $));
 		//		registration.addConfigListener(DETAILS_EQUIPMENT_REQUIREMENT, id -> refreshTag(id, $ -> requirementDetailsTag = $));
-		registration.addRayTraceCallback(10000,
+		registration.addRayTraceCallback(
+				10000,
 				(HitResult hitResult, @Nullable Accessor<?> accessor, @Nullable Accessor<?> originalAccessor) -> {
 					if (accessor != null) {
 						Player player = accessor.getPlayer();

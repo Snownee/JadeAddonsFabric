@@ -1,42 +1,42 @@
 {
-  "schemaVersion": 1,
-  "id": "jadeaddons",
-  "version": "${version}",
-  "name": "Jade Addons",
-  "description": "Jade's additional mod supports for Fabric.",
-  "authors": [
-    "Snownee"
-  ],
-  "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/jade-addons-fabric",
-    "sources": "https://github.com/Snownee/JadeAddonsFabric",
-    "issues": "https://github.com/Snownee/JadeAddonsFabric/issues"
-  },
-  "license": "ARR",
-  "icon": "icon.png",
-  "entrypoints": {
-    "jade": [
-      "snownee.jade.addon.JadeAddonsBase"
-    ],
-    "modmenu": [
-      "snownee.jade.addon.ModMenuCompat"
-    ]
-  },
-  "mixins": [
-    "jadeaddons.mixins.json"
-  ],
-  "depends": {
-    "jade": ">=11.6",
-    "minecraft": ">=1.20"
-  },
-  "breaks": {
-    "create": "<0.5.1-"
-  },
-  "custom": {
-    "modmenu": {
-      "links": {
-        "modmenu.discord": "https://discord.gg/KzGQW7a"
-      }
-    }
-  }
+	"schemaVersion": 1,
+	"id": "jadeaddons",
+	"version": "${version}",
+	"name": "Jade Addons",
+	"description": "Jade's additional mod supports for Fabric.",
+	"authors": [
+		"Snownee"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/jade-addons-fabric",
+		"sources": "https://github.com/Snownee/JadeAddonsFabric",
+		"issues": "https://github.com/Snownee/JadeAddonsFabric/issues"
+	},
+	"license": "ARR",
+	"icon": "icon.png",
+	"entrypoints": {
+		"jade": [
+			"snownee.jade.addon.JadeAddonsBase"
+		],
+		"modmenu": [
+			"snownee.jade.addon.ModMenuCompat"
+		]
+	},
+	"mixins": [
+		"jadeaddons.mixins.json"
+	],
+	"depends": {
+		"jade": ">=11.6",
+		"minecraft": ">=1.20"
+	},
+	"breaks": {
+		"create": "<0.5.1-"
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.gg/KzGQW7a"
+			}
+		}
+	}
 }

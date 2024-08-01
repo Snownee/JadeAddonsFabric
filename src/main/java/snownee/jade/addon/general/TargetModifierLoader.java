@@ -108,7 +108,8 @@ public class TargetModifierLoader extends SimpleJsonResourceReloadListener imple
 	private static List<? extends EntityType<?>> parseEntities(JsonObject jsonObject) {
 		String entityId = GsonHelper.getAsString(jsonObject, "entity");
 		if (entityId.startsWith("#")) {
-			List<? extends EntityType<?>> list = Streams.stream(BuiltInRegistries.ENTITY_TYPE.getTagOrEmpty(TagKey.create(Registries.ENTITY_TYPE,
+			List<? extends EntityType<?>> list = Streams.stream(BuiltInRegistries.ENTITY_TYPE.getTagOrEmpty(TagKey.create(
+					Registries.ENTITY_TYPE,
 					new ResourceLocation(entityId.substring(1))))).map(Holder::value).toList();
 			Preconditions.checkArgument(!list.isEmpty(), "No entity type found for tag: " + entityId);
 			return list;
@@ -124,7 +125,8 @@ public class TargetModifierLoader extends SimpleJsonResourceReloadListener imple
 	private static List<Block> parseBlocks(JsonObject jsonObject) {
 		String blockId = GsonHelper.getAsString(jsonObject, "block");
 		if (blockId.startsWith("#")) {
-			List<Block> blocks = Streams.stream(BuiltInRegistries.BLOCK.getTagOrEmpty(TagKey.create(Registries.BLOCK,
+			List<Block> blocks = Streams.stream(BuiltInRegistries.BLOCK.getTagOrEmpty(TagKey.create(
+					Registries.BLOCK,
 					new ResourceLocation(blockId.substring(1))))).map(Holder::value).toList();
 			Preconditions.checkArgument(!blocks.isEmpty(), "No block found for tag: " + blockId);
 			return blocks;
@@ -164,7 +166,8 @@ public class TargetModifierLoader extends SimpleJsonResourceReloadListener imple
 			return JadeAddonsBase.client.blockAccessor().from(blockAccessor).blockState(replacement.defaultBlockState()).build();
 		}
 		if (accessor instanceof EntityAccessor) {
-			BlockHitResult blockHitResult = new BlockHitResult(hitResult.getLocation(),
+			BlockHitResult blockHitResult = new BlockHitResult(
+					hitResult.getLocation(),
 					accessor.getPlayer().getDirection().getOpposite(),
 					BlockPos.containing(hitResult.getLocation()),
 					false);
