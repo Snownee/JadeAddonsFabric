@@ -10,6 +10,7 @@ import com.google.common.cache.CacheBuilder;
 import net.minecraft.ChatFormatting;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import snownee.jade.addon.JadeAddonsBase;
 import snownee.jade.addon.core.ObjectNameProvider;
 import snownee.jade.api.Accessor;
 import snownee.jade.api.BlockAccessor;
@@ -36,7 +37,7 @@ public enum ContraptionExactBlockProvider implements IEntityComponentProvider {
 		if (exact == null) {
 			return null;
 		}
-		return CreatePlugin.client.getAccessorHandler(exact.getAccessorType()).getIcon(exact);
+		return JadeAddonsBase.client.getAccessorHandler(exact.getAccessorType()).getIcon(exact);
 	}
 
 	@Override

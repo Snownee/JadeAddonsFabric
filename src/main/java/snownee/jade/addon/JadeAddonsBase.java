@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import snownee.jade.addon.create.CreatePlugin;
+import snownee.jade.addon.general.GeneralPlugin;
 import snownee.jade.addon.lootr.LootrPlugin;
 import snownee.jade.addon.mi.MIPlugin;
 import snownee.jade.api.IWailaClientRegistration;
@@ -19,9 +20,11 @@ import snownee.jade.util.CommonProxy;
 @WailaPlugin
 public class JadeAddonsBase implements IWailaPlugin {
 	public static final Map<String, Supplier<Supplier<IWailaPlugin>>> PLUGIN_LOADERS = Maps.newHashMap();
+	public static IWailaClientRegistration client;
 	private final List<IWailaPlugin> plugins = Lists.newArrayList();
 
 	static {
+		PLUGIN_LOADERS.put(JadeAddons.ID, () -> GeneralPlugin::new);
 		PLUGIN_LOADERS.put("create", () -> CreatePlugin::new);
 		PLUGIN_LOADERS.put("lootr", () -> LootrPlugin::new);
 		PLUGIN_LOADERS.put("modern_industrialization", () -> MIPlugin::new);
@@ -55,6 +58,7 @@ public class JadeAddonsBase implements IWailaPlugin {
 
 	@Override
 	public void registerClient(IWailaClientRegistration registration) {
+		client = registration;
 		plugins.forEach($ -> $.registerClient(registration));
 	}
 }

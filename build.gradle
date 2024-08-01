@@ -95,7 +95,7 @@ dependencies {
     //modImplementation "maven.modrinth:secret-rooms:1.3.2"
     //modImplementation "curse.maven:arrp-463113:3901211"
     //https://modrinth.com/mod/modern-industrialization/versions
-    modImplementation "maven.modrinth:modern-industrialization:1.8.5"
+    modImplementation "maven.modrinth:modern-industrialization:1.8.6"
     modImplementation("dev.draylar:magna:${project.magna_version}") {
         exclude(group: "io.github.prospector")
         exclude(group: "me.shedaniel.cloth")
