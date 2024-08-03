@@ -8,9 +8,9 @@ import java.util.function.Consumer;
 import org.jetbrains.annotations.Nullable;
 
 import dev.emi.trinkets.api.TrinketsApi;
-import io.github.fabricators_of_create.porting_lib.event.common.TagsUpdatedCallback;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.event.lifecycle.v1.CommonLifecycleEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -78,7 +78,7 @@ public class GeneralPlugin implements IWailaPlugin {
 		}
 
 		TargetModifierLoader loader = new TargetModifierLoader();
-		TagsUpdatedCallback.EVENT.register(registryAccess -> loader.reload());
+		CommonLifecycleEvents.TAGS_LOADED.register((registryAccess, client) -> loader.reload());
 		registration.addRayTraceCallback(loader);
 		registration.addTooltipCollectedCallback(loader);
 	}
