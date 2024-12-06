@@ -10,5 +10,8 @@
 	"client": [
 		"create.GoggleOverlayRendererMixin",
 		"create.PonderTooltipHandlerMixin"
+	],
+	"mixins": [
+		"create.BacktankBlockEntityAccess"
 	]
 }

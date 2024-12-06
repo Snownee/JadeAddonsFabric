@@ -21,6 +21,9 @@
 	#Range: > 0
 	maximumContraptionLightVolume = 16384
 	#.
+	#Disable to prevent being rotated while seated on a Moving Contraption
+	rotateWhenSeated = true
+	#.
 	#Log a stack-trace when rendering issues happen within a moving contraption.
 	explainRenderErrors = false
 	#.
