@@ -11,7 +11,7 @@ import snownee.jade.api.WailaPlugin;
 
 @WailaPlugin(MIPlugin.ID)
 public class MIPlugin implements IWailaPlugin {
-	public static final String ID = "modern_industrialization";
+	public static final String ID = "jadeaddons.modern_industrialization";
 	public static final ResourceLocation ENERGY = new ResourceLocation(ID, "energy");
 	public static final ResourceLocation PIPE = new ResourceLocation(ID, "pipe");
 

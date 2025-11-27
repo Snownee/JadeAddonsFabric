@@ -12,6 +12,8 @@
 		"create.PonderTooltipHandlerMixin"
 	],
 	"mixins": [
-		"create.BacktankBlockEntityAccess"
+		"create.BacktankBlockEntityAccess",
+		"create.BlueprintOverlayRendererAccess",
+		"create.FilterItemAccess"
 	]
 }

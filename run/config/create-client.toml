@@ -17,10 +17,6 @@
 	#Range: 0.0 ~ 1.0
 	fanParticleDensity = 0.5
 	#.
-	#The maximum amount of blocks for which to try and calculate dynamic contraption lighting. Decrease if large contraption cause too much lag
-	#Range: > 0
-	maximumContraptionLightVolume = 16384
-	#.
 	#Disable to prevent being rotated while seated on a Moving Contraption
 	rotateWhenSeated = true
 	#.
@@ -36,9 +32,6 @@
 	#Maximum Distance to the player at which items in Blocks' filter slots will be displayed
 	#Range: 1.0 ~ 3.4028234663852886E38
 	filterItemRenderDistance = 10.0
-	#.
-	#Show kinetic debug information on blocks while the F3-Menu is open.
-	enableRainbowDebug = true
 	#.
 	#Vertical offset for the Toolbox Hotbar overlay.
 	#Range: > -2147483648
@@ -90,16 +83,6 @@
 		ambientVolumeCap = 0.10000000149011612
 
 	#.
-	#Ponder settings
-	[client.ponder]
-		#.
-		#Show additional info in the ponder view and reload scene scripts more frequently.
-		editingMode = false
-		#.
-		#Slow down a ponder scene whenever there is text on screen.
-		comfyReading = true
-
-	#.
 	#Railway related settings
 	[client.trains]
 		#.
@@ -112,6 +95,13 @@
 		#.
 		#Display nodes and edges of a Railway Network while f3 debug mode is active
 		showTrackGraphOnF3 = false
+		#.
+		#Track Network Color on maps
+		#Allowed Values: RED, GREY, WHITE
+		trainMapColorTheme = "RED"
+		#.
+		#Display Track Networks and Trains on supported map mods
+		showTrainMapOverlay = true
 
 	#.
 	#Settings for the Goggle Overlay
@@ -147,15 +137,9 @@
 		customBorderBotOverlay = 1344798847
 
 	#.
-	#Settings for the Placement Assist
-	[client.placementAssist]
+	#Mod Integration and JEI
+	[client.jeiIntegration]
 		#.
-		#Change the size of the Indicator by this multiplier
-		#Range: 0.0 ~ 3.4028234663852886E38
-		indicatorScale = 1.0
-		#.
-		#What indicator should be used when showing where the assisted placement ends up relative to your crosshair
-		#Choose 'NONE' to disable the Indicator altogether
-		#Allowed Values: TEXTURE, TRIANGLE, NONE
-		indicatorType = "TEXTURE"
+		#Whether to auto-update the JEI search when searching in the stock keeper UI
+		syncJeiSearch = true
 

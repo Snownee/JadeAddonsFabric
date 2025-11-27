@@ -42,9 +42,8 @@ public enum ContraptionItemStorageProvider implements IServerExtensionProvider<A
 			ServerLevel level,
 			AbstractContraptionEntity entity,
 			boolean showDetails) {
-		//TODO: simplify it in 1.20.2+
-		Contraption contraption = ((AbstractContraptionEntity) entity).getContraption();
-		Storage<ItemVariant> storage = contraption.getSharedInventory();
+		Contraption contraption = entity.getContraption();
+		Storage<ItemVariant> storage = contraption.getStorage().getAllItems();
 		try {
 			return ItemStorageProvider.INSTANCE.containerCache.get(
 					storage,

@@ -7,8 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.simibubi.create.foundation.ponder.PonderTooltipHandler;
-
+import net.createmod.ponder.foundation.PonderTooltipHandler;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import snownee.jade.overlay.OverlayRenderer;
@@ -16,7 +15,7 @@ import snownee.jade.overlay.OverlayRenderer;
 @Mixin(value = PonderTooltipHandler.class, remap = false)
 public class PonderTooltipHandlerMixin {
 	@Inject(method = "addToTooltip", at = @At("HEAD"), cancellable = true)
-	private static void jadeaddons$addToTooltip(ItemStack stack, List<Component> tooltip, CallbackInfo ci) {
+	private static void jadeaddons$addToTooltip(List<Component> tooltip, ItemStack stack, CallbackInfo ci) {
 		if (OverlayRenderer.shown) {
 			ci.cancel();
 		}

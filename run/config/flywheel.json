@@ -1,5 +1,8 @@
 {
-  "backend": "INSTANCING",
-  "debugNormals": false,
-  "limitUpdates": true
+  "backend": "DEFAULT",
+  "limitUpdates": true,
+  "workerThreads": -1,
+  "flw_backends": {
+    "lightSmoothness": "smooth"
+  }
 }

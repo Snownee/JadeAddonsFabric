@@ -54,6 +54,19 @@
   "jadeaddons": {
     "equipment_requirement": ""
   },
+  "jadeaddons.create": {
+    "filter": true,
+    "backtank_capacity": true,
+    "goggles.requires_goggles": true,
+    "goggles": false,
+    "blaze_burner": true,
+    "exact_block": true,
+    "goggles.detailed": false,
+    "placard": true
+  },
+  "jadeaddons.lootr": {
+    "info": true
+  },
   "jade": {
     "coordinates.rel": false,
     "distance": false,
@@ -61,19 +74,5 @@
     "coordinates": false,
     "registry_name": "ADVANCED_TOOLTIPS",
     "mod_name": true
-  },
-  "create": {
-    "filter": true,
-    "backtank_capacity": true,
-    "goggles.requires_goggles": true,
-    "goggles": true,
-    "blaze_burner": true,
-    "exact_block": true,
-    "crafting_blueprint": true,
-    "goggles.detailed": false,
-    "placard": true
-  },
-  "lootr": {
-    "info": true
   }
 }

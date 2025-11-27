@@ -38,8 +38,8 @@ public enum ContraptionFluidStorageProvider implements IServerExtensionProvider<
 			ServerLevel level,
 			AbstractContraptionEntity entity,
 			boolean showDetails) {
-		Contraption contraption = ((AbstractContraptionEntity) entity).getContraption();
-		return JadeFabricUtils.fromFluidStorage(contraption.getSharedFluidTanks());
+		Contraption contraption = entity.getContraption();
+		return JadeFabricUtils.fromFluidStorage(contraption.getStorage().getFluids());
 	}
 
 }

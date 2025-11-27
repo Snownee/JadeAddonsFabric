@@ -17,7 +17,7 @@ import snownee.jade.api.WailaPlugin;
 
 @WailaPlugin(LootrPlugin.ID)
 public class LootrPlugin implements IWailaPlugin {
-	public static final String ID = "lootr";
+	public static final String ID = "jadeaddons.lootr";
 	public static final ResourceLocation INFO = new ResourceLocation(ID, "info");
 	public static final ResourceLocation INVENTORY = new ResourceLocation(ID, "inventory");
 

@@ -29,6 +29,7 @@ repositories {
     maven { url = "https://maven.cafeteria.dev/releases/" } // Fake Player API
     maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
     maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge Config API Port
+    maven { url = "https://maven.createmod.net/" }
 
     maven { url = "https://dvs1.progwml6.com/files/maven/" } // JEI
     maven {
@@ -85,7 +86,7 @@ dependencies {
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 
     //https://modrinth.com/mod/jade/versions
-    modImplementation "maven.modrinth:jade:11.12.0+fabric"
+    modImplementation "maven.modrinth:jade:11.13.1+fabric"
     //modImplementation "libs:Jade-1.20:fabric-11.5.1"
     //modImplementation "curse.maven:create-fabric-624165:3913786"
     //https://modrinth.com/mod/lootr/versions
@@ -113,7 +114,7 @@ dependencies {
 
     // create setup
 //    modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:8.0.0"
-    modImplementation("com.simibubi.create:create-fabric-${project.minecraft_version}:${project.create_version}")
+    modImplementation("com.simibubi.create:create-fabric:${project.create_version}")
 // { transitive = false }
     /*
     modImplementation("io.github.fabricators_of_create.Porting-Lib:porting-lib:${project.port_lib_version}+${project.minecraft_version}")
