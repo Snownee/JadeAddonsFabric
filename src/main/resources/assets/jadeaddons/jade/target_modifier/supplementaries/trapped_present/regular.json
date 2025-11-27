@@ -1,7 +1,7 @@
 {
 	"type": "replace",
 	"target": {
-		"block": "supplementaries:trapped_present"
+		"block": "supplementaries:present_trapped"
 	},
 	"with": {
 		"block": "supplementaries:present"
