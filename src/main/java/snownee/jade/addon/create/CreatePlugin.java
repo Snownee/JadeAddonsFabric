@@ -77,7 +77,7 @@ public class CreatePlugin implements IWailaPlugin {
 	public void registerClient(IWailaClientRegistration registration) {
 		registration.addConfig(REQUIRES_GOGGLES, true);
 		registration.addConfig(GOGGLES_DETAILED, false);
-		registration.registerEntityComponent(CraftingBlueprintProvider.INSTANCE, BlueprintEntity.class);
+//		registration.registerEntityComponent(CraftingBlueprintProvider.INSTANCE, BlueprintEntity.class);
 		registration.registerBlockComponent(PlacardProvider.INSTANCE, PlacardBlock.class);
 		registration.registerBlockIcon(PlacardProvider.INSTANCE, PlacardBlock.class);
 		registration.registerBlockComponent(BlazeBurnerProvider.INSTANCE, BlazeBurnerBlock.class);
@@ -88,7 +88,7 @@ public class CreatePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(new GogglesProvider(), Block.class);
 
 		registration.registerItemStorageClient(ContraptionItemStorageProvider.INSTANCE);
-		registration.registerItemStorageClient(CraftingBlueprintProvider.INSTANCE);
+//		registration.registerItemStorageClient(CraftingBlueprintProvider.INSTANCE);
 		registration.registerItemStorageClient(PackageProvider.INSTANCE);
 		registration.registerItemStorageClient(TableClothProvider.INSTANCE);
 		registration.registerFluidStorageClient(ContraptionFluidStorageProvider.INSTANCE);
