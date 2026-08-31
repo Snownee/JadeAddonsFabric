@@ -1,16 +1,16 @@
 plugins {
-    id 'fabric-loom' version '1.7-SNAPSHOT'
+    id 'fabric-loom' version '1.17-SNAPSHOT'
     id 'maven-publish'
-    id "me.shedaniel.unified-publishing" version "0.1.+"
+    id "me.modmuss50.mod-publish-plugin" version "2.+"
 }
 
-sourceCompatibility = JavaVersion.VERSION_21
-targetCompatibility = JavaVersion.VERSION_21
-
-archivesBaseName = project.archives_base_name
 version = project.minecraft_version + "-Fabric-" + project.mod_version
 group = project.maven_group
 var realVersion = project.mod_version + '+fabric'
+
+base {
+    archivesName = project.archives_base_name
+}
 
 repositories {
     maven { url "https://maven.shedaniel.me/" }
@@ -177,37 +177,28 @@ publishing {
     }
 }
 
-unifiedPublishing {
-    project {
-        displayName = "[Fabric $project.supported_version] $project.mod_version"
-        version = realVersion // Optional, Inferred from project by default
-        changelog = file("CHANGELOG.md").exists() ? file("CHANGELOG.md").text : "" // Optional, in markdown format
-        releaseType = project.release_type // Optional, use "release", "beta" or "alpha"
-        gameVersions = [project.minecraft_version]
-        gameLoaders = ["fabric", "quilt"]
+publishMods {
+    file = tasks.remapJar.archiveFile
+    changelog = file('CHANGELOG.md').exists() ? file('CHANGELOG.md').text : ''
+    type = ['release': STABLE, 'beta': BETA, 'alpha': ALPHA][project.release_type]
+    modLoaders.add("fabric")
+    modLoaders.add("quilt")
+    displayName = "[Fabric ${project.supported_version}] ${project.mod_version}"
+    version = realVersion
 
-        mainPublication tasks.remapJar // Declares the publicated jar
+    curseforge {
+        projectId = "656665"
+        client = true
+        server = true
+        accessToken = providers.environmentVariable("CURSE_TOKEN")
+        minecraftVersions.add(project.minecraft_version)
+        requires("jade")
+    }
 
-        if (System.getenv("CURSE_TOKEN") != null) {
-            curseforge {
-                token = System.getenv("CURSE_TOKEN")
-                id = "656665"
-
-                relations { // Optional, Inferred from the relations above by default
-                    depends "jade"
-                }
-            }
-        }
-
-        if (System.getenv("MODRINTH_TOKEN") != null) {
-            modrinth {
-                token = System.getenv("MODRINTH_TOKEN")
-                id = "fThnVRli"
-
-                relations { // Optional, Inferred from the relations above by default
-                    depends "jade"
-                }
-            }
-        }
+    modrinth {
+        projectId = "fThnVRli"
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+        minecraftVersions.add(project.minecraft_version)
+        requires("jade")
     }
 }

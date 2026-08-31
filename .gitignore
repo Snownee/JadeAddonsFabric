@@ -27,3 +27,4 @@ run/*
 #!run/config
 #!run/config/fabric_loader_dependencies.json
 /CHANGELOG.md
+/run/config/fabric/indigo-renderer.properties
