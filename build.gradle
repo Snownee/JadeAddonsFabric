@@ -189,14 +189,18 @@ publishMods {
         client = true
         server = true
         accessToken = providers.environmentVariable("CURSE_TOKEN")
-        minecraftVersions.add(project.minecraft_version)
+        minecraftVersions.add(minecraft_version)
+        minecraftVersions.add("26.1")
+        minecraftVersions.add("26.1.1")
         requires("jade")
     }
 
     modrinth {
         projectId = "fThnVRli"
         accessToken = providers.environmentVariable("MODRINTH_TOKEN")
-        minecraftVersions.add(project.minecraft_version)
+        minecraftVersions.add(minecraft_version)
+        minecraftVersions.add("26.1")
+        minecraftVersions.add("26.1.1")
         requires("jade")
     }
 }
