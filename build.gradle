@@ -147,6 +147,7 @@ java {
 jar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     exclude '**/*.bat'
+    exclude '**/*.py'
     from("LICENSE") {
         rename { "${it}_${project.archivesBaseName}" }
     }

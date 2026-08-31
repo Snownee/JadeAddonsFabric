@@ -15,7 +15,7 @@ import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
 
 public class LootrPlugin implements IWailaPlugin {
-	public static final String ID = "lootr";
+	public static final String ID = "jadeaddons.lootr";
 	public static final Identifier INFO = Identifier.fromNamespaceAndPath(ID, "info");
 	public static final Identifier INVENTORY = Identifier.fromNamespaceAndPath(ID, "inventory");
 
