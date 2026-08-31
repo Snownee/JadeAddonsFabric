@@ -1,4 +1,4 @@
-package snownee.jade.addon;
+package snownee.jadeaddons;
 
 import org.slf4j.Logger;
 

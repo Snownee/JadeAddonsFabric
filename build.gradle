@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.17-SNAPSHOT'
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
     id 'maven-publish'
     id "me.modmuss50.mod-publish-plugin" version "2.+"
 }
@@ -16,6 +16,7 @@ repositories {
     maven { url "https://maven.shedaniel.me/" }
     // trinkets
     maven { url "https://maven.terraformersmc.com/" }
+    maven { url "https://maven.nucleoid.xyz/" }
     maven {
         url "https://cursemaven.com"
         content {
@@ -64,59 +65,56 @@ sourceSets {
 dependencies {
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     // Fabric API. This is technically optional, but you probably want it anyway.
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
     // You may need to force-disable transitiveness on them.
 
-    modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+//    api("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
+//        exclude(group: "net.fabricmc.fabric-api")
+//    }
+    implementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 
-    modImplementation "dev.architectury:architectury-fabric:${project.architectury_version}"
-    modImplementation "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
+//    implementation "dev.architectury:architectury-fabric:${project.architectury_version}"
+//    implementation "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 
     //https://modrinth.com/mod/jade/versions
-    modImplementation "maven.modrinth:jade:15.8.0+fabric"
-    //modImplementation "libs:Jade-1.20:fabric-11.5.1"
-    //modImplementation "curse.maven:create-fabric-624165:3913786"
+    implementation "maven.modrinth:jade:26.1.9+fabric"
+    //implementation "libs:Jade-1.20:fabric-11.5.1"
+    //implementation "curse.maven:create-fabric-624165:3913786"
     //https://modrinth.com/mod/lootr/versions
-    modImplementation "maven.modrinth:lootr:1.10.33.84"
-    modImplementation "maven.modrinth:kiwi:15.1.1+fabric"
+    // 1.23.38.120
+    implementation "maven.modrinth:lootr:m1PLActz"
+    implementation "maven.modrinth:kiwi:26.0.18+fabric"
+    compileOnly "eu.pb4:trinkets:${project.trinkets_version}"
 
     // create setup
-//    modImplementation("com.simibubi.create:create-fabric-${project.minecraft_version}:${project.create_version}")
+//    implementation("com.simibubi.create:create-fabric-${project.minecraft_version}:${project.create_version}")
 // { transitive = false }
     /*
-    modImplementation("io.github.fabricators_of_create.Porting-Lib:porting-lib:${project.port_lib_version}+${project.minecraft_version}")
-    //modImplementation("me.alphamode:ForgeTags:${project.forge_tags_version}")
-    modImplementation("com.electronwill.night-config:core:${project.night_config_core_version}")
-    modImplementation("com.electronwill.night-config:toml:${project.night_config_toml_version}")
-    modImplementation("curse.maven:forge-config-api-port-fabric-547434:${project.config_api_id}") { transitive = false }
-    modImplementation("com.tterrag.registrate_fabric:Registrate:${project.registrate_version}")
-    modImplementation("com.jozufozu.flywheel:flywheel-fabric-${flywheel_minecraft_version}:${project.flywheel_version}")
-    modImplementation("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_entity_attributes_version}")
-    modImplementation("dev.cafeteria:fake-player-api:${project.fake_player_api_version}")
-    modImplementation("io.github.tropheusj:milk-lib:${project.milk_lib_version}")
+    implementation("io.github.fabricators_of_create.Porting-Lib:porting-lib:${project.port_lib_version}+${project.minecraft_version}")
+    //implementation("me.alphamode:ForgeTags:${project.forge_tags_version}")
+    implementation("com.electronwill.night-config:core:${project.night_config_core_version}")
+    implementation("com.electronwill.night-config:toml:${project.night_config_toml_version}")
+    implementation("curse.maven:forge-config-api-port-fabric-547434:${project.config_api_id}") { transitive = false }
+    implementation("com.tterrag.registrate_fabric:Registrate:${project.registrate_version}")
+    implementation("com.jozufozu.flywheel:flywheel-fabric-${flywheel_minecraft_version}:${project.flywheel_version}")
+    implementation("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_entity_attributes_version}")
+    implementation("dev.cafeteria:fake-player-api:${project.fake_player_api_version}")
+    implementation("io.github.tropheusj:milk-lib:${project.milk_lib_version}")
     implementation("com.google.code.findbugs:jsr305:${project.jsr305_version}")
     */
 
-    modApi("teamreborn:energy:${project.tr_energy_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-    modImplementation "dev.emi:trinkets:${project.trinkets_version}"
+//    api("teamreborn:energy:${project.tr_energy_version}") {
+//        exclude(group: "net.fabricmc.fabric-api")
+//    }
+//    implementation "dev.emi:trinkets:${project.trinkets_version}"
 }
 
 loom {
-    mixin {
-        defaultRefmapName = "${project.mod_id}.refmap.json"
-    }
-
     //accessWidenerPath = file("src/main/resources/${project.mod_id}.accesswidener")
 }
 
@@ -136,7 +134,7 @@ tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
 
     // Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
-    it.options.release = 21
+    it.options.release = 25
 }
 
 java {
@@ -159,8 +157,8 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             // add all the jars that should be included when publishing to maven
-            artifact(remapJar) {
-                builtBy remapJar
+            artifact(jar) {
+                builtBy jar
             }
             //artifact(sourcesJar) {
             //  builtBy remapSourcesJar
@@ -178,7 +176,7 @@ publishing {
 }
 
 publishMods {
-    file = tasks.remapJar.archiveFile
+    file = tasks.jar.archiveFile
     changelog = file('CHANGELOG.md').exists() ? file('CHANGELOG.md').text : ''
     type = ['release': STABLE, 'beta': BETA, 'alpha': ALPHA][project.release_type]
     modLoaders.add("fabric")

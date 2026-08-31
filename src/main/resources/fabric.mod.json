@@ -16,17 +16,17 @@
 	"icon": "icon.png",
 	"entrypoints": {
 		"jade": [
-			"snownee.jade.addon.JadeAddonsBase"
+			"snownee.jadeaddons.JadeAddonsBase"
 		],
 		"modmenu": [
-			"snownee.jade.addon.ModMenuCompat"
+			"snownee.jadeaddons.ModMenuCompat"
 		]
 	},
 	"mixins": [
 	],
 	"depends": {
-		"jade": ">=15.7",
-		"minecraft": ">=1.21"
+		"jade": ">=26.1.9",
+		"minecraft": ">=26.1"
 	},
 	"custom": {
 		"modmenu": {
